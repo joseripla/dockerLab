@@ -1,6 +1,4 @@
 # Docker Cheat Sheet
-@octocat :+1: This PR looks great - it's ready to merge! :shipit:
-**Want to improve this cheat sheet?  See the [Contributing](#contributing) section!**
 
 ## Table of Contents
 
