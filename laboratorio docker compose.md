@@ -100,3 +100,23 @@ image: la imagen donde basará su contenedor
 environment: aquí pasamos las variables, en este caso es un contenedor con MySQL y le pasamos la base de datos a crear y las credenciales.
 Ya aquí tenemos el ambiente multi-contenedor listo, pero antes de lanzar nuestro proyecto de wordpress debemos configurar wp-config.php con las credenciales que le pasos en las variables
 
+  // ** MySQL settings - You can get this info from your web host ** //
+
+    /** The name of the database for WordPress */
+    define('DB_NAME', 'jsitech');
+
+    /** MySQL database username */
+    define('DB_USER', 'jsitech');
+
+    /** MySQL database password */
+    define('DB_PASSWORD', 'jsitech');
+
+    /** MySQL hostname */
+    define('DB_HOST', 'db:3306');
+    
+    Ya con todo definido en los archivos correspondiente, solo es lanzar el proyecto multi-contenedor. Ejecutamos el comando
+# docker-compose up
+Esto se encargará de crear las imágenes necesarias y lanzar los contenedores correspondientes a la web y la base de datos.
+    
+Vamos a ver si todo funciona bien, si recuerdan creamos un mapeo de puertos 8080:8080, lo que quiere decir que debemos poder acceder al contenedor con la IP del host de docker mediante ese puerto.
+http://192.168.1.9:8080
