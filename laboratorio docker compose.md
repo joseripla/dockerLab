@@ -67,3 +67,61 @@ Antes de proceder con la instalación de compose es bueno consultar la página d
 $ curl -L https://github.com/docker/compose/releases/download/1.6.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 
 $ chmod +x /usr/local/bin/docker-compose
+
+
+
+Comprobamos la instalación
+$ docker-compose --version
+Usando Compose
+
+Vamos a ver el uso de Compose en un caso simple, definiendo un ambiente para Wordpress.
+Descargamos el CMS de WordPress y lo descomprimimos.
+$ curl https://wordpress.org/latest.tar.gz | tar -xvzf –
+El directorio resultante es wordpress/, esto lo podemos cambiar a nuestro gusto
+$ mv wordpress/ jsitech/
+Accedemos al directorio
+$ cd jsitech/
+El Próximo paso es crear un Dockerfile dentro del directorio, que definirá el contenedor que estará ejecutando la aplicación.
+   $ vi Dockerfile
+    FROM ubuntu:14.04
+
+    RUN apt-get update && apt-get install php5 php5-mysql -y
+
+    ADD . /codigo
+    
+    
+    Este Dockerfile crea el Contenedor base con los requisitos para ejecutar el cms de WordPress y agrega los archivos correspondiente
+El próximo paso es crear un archivo docker-compose.yml que iniciará los servicios y una instancia separada de MySQL.
+$ nano docker-compose.yml
+
+ web:
+     build: .
+     command: php -S 0.0.0.0:8080 -t /jsitech
+     ports:
+     - "8080:8080"
+
+     links:
+     - db
+
+     volumes:
+     - .:/jsitech
+
+    db:
+     image: mysql
+     environment:
+     MYSQL_ROOT_PASSWORD: jsitech
+     MYSQL_DATABASE: jsitech
+     MYSQL_USER: jsitech
+     MYSQL_PASSWORD: jsitech
+Vamos a explica brevemente los argumentos
+web : Nombre que define el servicio
+build : crea el contenedor, en este caso pasamos . , para que haga uso del Dockerfile que creamos recientemente.
+command : El comando que le pasamos al contenedor al momento de su ejecución.
+ports: Mapeo de Puertos
+links : Definimos el enlace de los contenedores
+volumes : Creamos el volumen que contiene nuestro código
+db: Nombre que define nuestro contenedor con la base de datos
+image: la imagen donde basará su contenedor
+environment: aquí pasamos las variables, en este caso es un contenedor con MySQL y le pasamos la base de datos a crear y las credenciales.
+Ya aquí tenemos el ambiente multi-contenedor listo, pero antes de lanzar nuestro proyecto de wordpress debemos configurar wp-config.php con las credenciales que le pasos en las variables
+
