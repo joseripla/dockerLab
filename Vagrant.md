@@ -1,3 +1,6 @@
+para instalar vagrant[ubuntuDockerBox](https://atlas.hashicorp.com/erasmolpa/boxes/UbuntuDocker/)
+
+
 http://aruizca.com/steps-to-create-a-vagrant-base-box-with-ubuntu-14-04-desktop-gui-and-virtualbox/
 
 https://github.com/ckan/ckan/wiki/How-to-Create-a-CentOS-Vagrant-Base-Box
