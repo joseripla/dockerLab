@@ -1,6 +1,6 @@
 {
   "name": "Dockerlab",
   "tagline": "Laboratorio de introducción a Docker",
-  "body": "### Repaso conceptos de docker \r\n\r\n### Contacto\r\nCualquier aclaración puedes ponerte en contacto conmigo (@erasmolpa) ",
+  "body": "### El objetivo de este laboratorio es obtener los conocimientos básicos sobre Docker.\r\n\r\n#### Los contenidos a tratar son:\r\n\r\n* Repaso conceptual.Que son los contenedores?\r\n* Arquitectura de Docker.\r\n* Docker ToolBox. De que se compone?\r\n** Docker Engine.\r\n** Docker Machine.\r\n** Docker Hub.\r\n* Lanzando el primer contenedor.\r\n* Docker como herramienta para crear servicios.\r\n* Docker para manejo de datos.\r\n* Orchestando Servicios con Docker.\r\n* Docker Compose.\r\n \r\n\r\n### Contacto\r\n\r\nCualquier aclaración puedes ponerte en contacto conmigo (@erasmolpa)\r\n\r\nTambién puedes unirte al grupo de Meetup [Dev_Ops_Tnf] ([http://www.meetup.com/es-ES/Dev_Ops_Tnf/)",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
