@@ -1,5 +1,4 @@
-http://www.adictosaltrabajo.com/tutoriales/docker-compose-machine-y-swarm/#05
-https://www.youtube.com/watch?v=tnBzfQLKf5M
+
 <code>
 version: 2,
 services:
