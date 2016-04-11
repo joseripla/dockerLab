@@ -292,6 +292,13 @@ If you want to link across docker hosts then you should look at [Swarm](https://
 
 ## Volumes
 
+Un Volumen es asignar un directorio a un container para almacenar datos.
+
+* Los cambios son excluidos cuando se actualiza una imagen.
+* Se persiste cuando un contenedor se borra.
+* Se puede mapear a una carpeta del host.
+* Pueden ser compartidos entre contenedores.
+
 Docker volumes are [free-floating filesystems](https://docs.docker.com/userguide/dockervolumes/).  They don't have to be connected to a particular container.  You should use volumes mounted from [data-only containers](https://medium.com/@ramangupta/why-docker-data-containers-are-good-589b3c6c749e) for portability.
 
 ### Lifecycle
