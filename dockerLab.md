@@ -4,9 +4,6 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
 ## Table of Contents
 
-* [Why](#why)
-* [Prerequisites](#prerequisites)
-* [Installation](#installation)
 * [Containers](#containers)
 * [Images](#images)
 * [Networks](#networks)
@@ -20,66 +17,6 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 * [Security](#security)
 * [Tips](#tips)
 * [Contributing](#contributing)
-
-## Why
-
-"With Docker, developers can build any app in any language using any toolchain. “Dockerized” apps are completely portable and can run anywhere - colleagues’ OS X and Windows laptops, QA servers running Ubuntu in the cloud, and production data center VMs running Red Hat.
-
-Developers can get going quickly by starting with one of the 13,000+ apps available on Docker Hub. Docker manages and tracks changes and dependencies, making it easier for sysadmins to understand how the apps that developers build work. And with Docker Hub, developers can automate their build pipeline and share artifacts with collaborators through public or private repositories.
-
-Docker helps developers build and ship higher-quality applications, faster." -- [What is Docker](https://www.docker.com/what-docker#copy1)
-
-## Prerequisites
-
-I use [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) with the [Docker plugin](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#docker) for autocompletion of docker commands.  YMMV.
-
-### Linux
-
-The 3.10.x kernel is [the minimum requirement](https://docs.docker.com/installation/binaries/#check-kernel-dependencies) for Docker.
-
-### MacOS
-
- 10.8 “Mountain Lion” or newer is required.
-
-## Installation
-
-### Linux
-
-Quick and easy install script provided by Docker:
-
-```
-curl -sSL https://get.docker.com/ | sh
-```
-
-If you're not willing to run a random shell script, please see the [installation](https://docs.docker.com/installation/) instructions for your distribution.  
-
-If you are a complete Docker newbie, you should follow the [series of tutorials](https://docs.docker.com/linux/started/) now.
-
-### Mac OS X
-
-Download and install [Docker Toolbox](https://www.docker.com/products/docker-toolbox).  If that doesn't work, see the [installation instructions](https://docs.docker.com/installation/mac/).
-
-> **NOTE** If you have an existing docker toolbox, you might think you can upgrade [Docker Machine](https://docs.docker.com/machine/install-machine/) binaries directly (either from URL or `docker-machine upgrade default`) and it will take care of itself.  This is not going to help -- `docker-machine` will be `1.10.3` while `docker` is still `1.8.3` or whatever your previous version is.
->
-> You are much better off using Docker Toolbox DMG file to upgrade, which will take care of all the binaries at once.
-
-Once you've installed Docker Toolbox, install a VM with Docker Machine using the VirtualBox provider:
-
-```
-docker-machine create --driver=virtualbox default
-docker-machine ls
-eval "$(docker-machine env default)"
-```
-
-Then start up a container:
-
-```
-docker run hello-world
-```
-
-That's it, you have a running Docker container.
-
-If you are a complete Docker newbie, you should probably follow the [series of tutorials](https://docs.docker.com/mac/started/) now.
 
 ## Containers
 
