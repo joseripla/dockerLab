@@ -1,29 +1,4 @@
 
-<code>
-version: 2,
-services:
-  contenedor_1:
-    image: httpd/org:latest
-    container_name: httpd
-    ports:
-      - 100:22
-      - 80:80
-    links:
-      - tomcat:tomcat_alias
-  contenedor_2:
-    image: tomcat/org:latest 
-    container_name: tomcat 
-    ports: 
-      - 101:22 
-      - 8080:8080
- </code>
- 
-Este ejemplo crearía 2 contenedores con nombre apache y tomcat, interconectados entre sí mediante el alias tomcat_alias. Un pequeño detalle a nivel conceptual, en la documentación la definición de contenedores se da a entender como definición de servicios ya que lxc y docker están orientados de forma implícita a la implementación de microservicios. La verdad es que este detalle no tiene mucha relevancia pero puede dar lugar a confusiones.
-
-Como introducción, no tiene mucho sentido extender este artículo para describir todas las opciones configurables en este fichero. Si se quiere profundizar en este aspecto aconsejamos consultar la guía de referencia oficial del compose file.
-
- 
-
 ### COMANDOS DOCKER COMPOSE
 Aquí los comandos más usados de docker-compose, asumiendo que el usuario ha llevado a cabo el ciclo de creación y mantenimiento de contenedores mediante el manager oficial de docker, y que mantiene un determinado repositorio de imágenes (en local o remoto).
 
