@@ -10,11 +10,18 @@ curl -sSL https://get.docker.com/ | sh
 
 Simplemente hay que descargar el [Docker Toolbox](https://www.docker.com/products/docker-toolbox). Las instrucciones de instalacion están en: 
 
-* [MAc](https://docs.docker.com/installation/mac/)
+* [MAC](https://docs.docker.com/installation/mac/)
 
 * [WINDOWS](https://docs.docker.com/engine/installation/windows/)
 
 
+Docker Toolbox es una herramienta que nos instalará :
+
+* Docker Engine.
+* Docker Compose.
+* Docker Machine.
+* Kitematic.
+* Además, permite descargar e instalar git y Virtualbox.
 
 Si tienes dudas sobre la instalacion.... [installation](https://docs.docker.com/installation/)
 
