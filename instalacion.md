@@ -8,7 +8,11 @@ curl -sSL https://get.docker.com/ | sh
 
 ### Mac OS X y WINDOWS 
 
-Simplemente hay que descargar el [Docker Toolbox](https://www.docker.com/products/docker-toolbox). Las instrucciones de instalacion están en:  [MAc](https://docs.docker.com/installation/mac/)  [WINDOWS](https://docs.docker.com/engine/installation/windows/)
+Simplemente hay que descargar el [Docker Toolbox](https://www.docker.com/products/docker-toolbox). Las instrucciones de instalacion están en: 
+
+* [MAc](https://docs.docker.com/installation/mac/)
+
+* [WINDOWS](https://docs.docker.com/engine/installation/windows/)
 
 
 
