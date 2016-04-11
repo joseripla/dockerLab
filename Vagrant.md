@@ -1,4 +1,7 @@
-para instalar vagrant [ubuntuDockerBox] (https://atlas.hashicorp.com/erasmolpa/boxes/UbuntuDocker/)
+Existe disponible una máquina virtual Ubuntu con docker instalado.Esta máquina virtual la podéis instalar con Vagrant.
+
+
+[ubuntuDockerBox] (https://atlas.hashicorp.com/erasmolpa/boxes/UbuntuDocker/)
 
 
 http://aruizca.com/steps-to-create-a-vagrant-base-box-with-ubuntu-14-04-desktop-gui-and-virtualbox/
