@@ -1,3 +1,5 @@
+# see https://help.github.com/articles/basic-writing-and-formatting-syntax/#using-emoji
+
 # Docker Cheat Sheet
 
 ## Table of Contents
