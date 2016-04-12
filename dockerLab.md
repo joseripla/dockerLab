@@ -625,6 +625,12 @@ https://www.youtube.com/watch?v=PJ95WY2DqXo
 #### <i class="icon-pencil"></i>Ejercicio 4.Creando un contenedor MongoDb. Configuación del Volume.
 
 #### <i class="icon-pencil"></i>Ejercicio 5.Comunicando contenedores:
+Linking es un metodo de comunicación entre contenedores que permite transferir informacion entre ellos.
+Existen dos tipos de contenedores:
+
+Recipient , Tienen acceso a los datos del Source ejempplo. Web con base de datos, el contenedor web es el Recipient y la bbdd es el source.
+
+
 https://www.docker.com/products/docker-toolbox#/tutorials
 #### <i class="icon-pencil"></i>Ejercicio 6. Docker Compose.Creando un StackFile:
 
