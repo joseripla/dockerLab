@@ -1,12 +1,13 @@
 # see https://help.github.com/articles/basic-writing-and-formatting-syntax/#using-emoji
 https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
-# Docker Cheat Sheet
 
-## Table of Contents
+# Laboratorio de Docker
 
-* [Containers](#containers)
-* [Images](#images)
-* [Networks](#networks)
+##  Contenidos:
+
+* [Contenedores](#Contenedores)
+* [Imagenes](#imagenes)
+* [Red](#red)
 * [Registry and Repository](#registry--repository)
 * [Dockerfile](#dockerfile)
 * [Layers](#layers)
@@ -16,30 +17,30 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 * [Best Practices](#best-practices)
 * [Tips](#tips)
 
-## Containers
+## Contenedores
 
-[Your basic isolated Docker process](http://etherealmind.com/basics-docker-containers-hypervisors-coreos/).  Containers are to Virtual Machines as threads are to processes.  Or you can think of them as chroots on steroids.
+[Your basic isolated Docker process](http://etherealmind.com/basics-docker-containers-hypervisors-coreos/).
 
-### Lifecycle
+### Ciclo de vida 
 
-* [`docker create`](https://docs.docker.com/reference/commandline/create) creates a container but does not start it.
-* [`docker run`](https://docs.docker.com/reference/commandline/run) creates and starts a container in one operation.
-* [`docker rm`](https://docs.docker.com/reference/commandline/rm) deletes a container.
-* [`docker update`](https://docs.docker.com/engine/reference/commandline/update/) updates a container's resource limits.
+* [`docker create`](https://docs.docker.com/reference/commandline/create) -> Crea un contenedor pero no lo arranca
+* [`docker run`](https://docs.docker.com/reference/commandline/run)  -> Crea y arranca un contenedor.
+* [`docker rm`](https://docs.docker.com/reference/commandline/rm)  -> Elimina un contenedor.
+* [`docker update`](https://docs.docker.com/engine/reference/commandline/update/) --> Actualizar recursos de un contenedor. ejm: cambio en memoria size.
 
-If you want a transient container, `docker run --rm` will remove the container after it stops.
+Curiosidades....
 
-If you want to map a directory on the host to a docker container, `docker run -v $HOSTDIR:$DOCKERDIR`.  Also see [Volumes](https://github.com/wsargent/docker-cheat-sheet/#volumes).
+ `docker run --rm` Eliminar un contenedor después de parar su ejecución.Contenedor de tránsito.
 
-If you want to remove also the volumes associated with the container, the deletion of the container must include the -v switch like in `docker rm -v`.
+Para mapear directorios entre Host y Contenedor -->  `docker run -v $HOSTDIR:$DOCKERDIR`.  Also see [Volumes](https://github.com/wsargent/docker-cheat-sheet/#volumes).
 
-There's also a [logging driver](https://docs.docker.com/engine/admin/logging/overview/) available for individual containers in docker 1.10.  To run docker with a custom log driver (i.e. to syslog), use `docker run --log-driver=syslog`
+Para eliminar el volumen asociado a un contenedor. `docker rm -v`.
 
-## Starting and Stopping
+## Interactuar con Contenedores.
 
 * [`docker start`](https://docs.docker.com/reference/commandline/start) starts a container so it is running.
-* [`docker stop`](https://docs.docker.com/reference/commandline/stop) stops a running container.
-* [`docker restart`](https://docs.docker.com/reference/commandline/restart) stops and starts a container.
+* [`docker stop`](https://docs.docker.com/reference/commandline/stop) --> Para un contenedor que está corriendo.
+* [`docker restart`](https://docs.docker.com/reference/commandline/restart) --> Para y arrranca un container.
 * [`docker pause`](https://docs.docker.com/engine/reference/commandline/pause/) pauses a running container, "freezing" it in place.
 * [`docker unpause`](https://docs.docker.com/engine/reference/commandline/unpause/) will unpause a running container.
 * [`docker wait`](https://docs.docker.com/reference/commandline/wait) blocks until running container stops.
@@ -78,7 +79,7 @@ Restart policies on crashed docker instances are [covered here](http://container
 
 To enter a running container, attach a new shell process to a running container called foo, use: `docker exec -it foo /bin/bash`.
 
-## Images
+## Imagenes
 
 Images are just [templates for docker containers](https://docs.docker.com/engine/understanding-docker/#how-does-a-docker-image-work).
 
@@ -101,7 +102,7 @@ Images are just [templates for docker containers](https://docs.docker.com/engine
 
 While you can use the `docker rmi` command to remove specific images, there's a tool called [docker-gc](https://github.com/spotify/docker-gc) that will clean up images that are no longer used by any containers in a safe manner.
 
-## Networks
+## Red
 
 Internamente, Docker utiliza los mecanismos de linux para dar conectividad a los contenedores.En la instalación, docker crea una interfaz virtual ``docker0` en el Host a la que se asigna una Ip , por ejemplo 192.168.99.100.
 
