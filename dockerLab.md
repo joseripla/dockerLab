@@ -13,18 +13,20 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
      * [Volumes](#volumes)
      * [Exposing Ports](#exposing-ports)
      * [Red](#red)
-     
 * [Dockerfile](#dockerfile)
       * [Best Practices](#best-practices)
 * [Registro](#registro)
 * [Tips](#tips)
 * [Ejercicios](#ejercicios)
-
+* [Anexo.Introducción del siguiente laboratorio ](#anex) 
+      * Docker Compose. Orquestando Servicios.
+      * Docker Cloud. Plataforma para desplegar contenedores.
+      * Docker y la IC.
+      
 ## Arquitectura
+[Repasar las diapositivas del primer Meetup](http://es.slideshare.net/ErasmoDominguezJimen/devops-episodio-1-devopstnf?qid=a3de014b-9e2f-41fb-8d52-cb05aef9f9ac&v=&b=&from_search=1).
 
 ## Contenedores
-
-[Repasar las diapositivas del primer Meetup](http://es.slideshare.net/ErasmoDominguezJimen/devops-episodio-1-devopstnf?qid=a3de014b-9e2f-41fb-8d52-cb05aef9f9ac&v=&b=&from_search=1).
 
 ### Ciclo de vida 
 
@@ -590,3 +592,12 @@ docker inspect "IMAGE ID"
 ```
 
 #### <i class="icon-pencil"></i>Ejercicio 2. Encapsulando un contenedor como servicio (Contenedor con apache2).
+
+#### <i class="icon-pencil"></i>Ejercicio 3.Creando un microservicio con Node.
+#### <i class="icon-pencil"></i>Ejercicio 4.Creando un contenedor MongoDb. Configuación del Volume.
+
+#### <i class="icon-pencil"></i>Ejercicio 5.Comunicando contenedores:
+
+#### <i class="icon-pencil"></i>Ejercicio 6. Docker Compose.Creando un StackFile:
+
+
