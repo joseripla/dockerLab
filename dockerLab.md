@@ -1,6 +1,10 @@
 # see https://help.github.com/articles/basic-writing-and-formatting-syntax/#using-emoji
 https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
+
+#BASE
+
+https://jsitech1.gitbooks.io/meet-docker/content/mejores_practicas_dockerfiles.html
 # Laboratorio de Docker
 
 ##  Contenidos:
@@ -28,6 +32,12 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 ## Arquitectura
 [Repasar las diapositivas del primer Meetup](http://es.slideshare.net/ErasmoDominguezJimen/devops-episodio-1-devopstnf?qid=a3de014b-9e2f-41fb-8d52-cb05aef9f9ac&v=&b=&from_search=1).
 
+## Novedades
+
+Eclipse se suma a la fiesta 
+                                            http://www.eclipse.org/che/
+                                            https://eclipse-che.readme.io/docs/usage
+                                            https://github.com/domeide/doclipser
 ## Contenedores
 
 ### Ciclo de vida 
@@ -264,7 +274,7 @@ $ curl 203.0.113.2
 ### Imágenes en repositorios. Docker Hub
 
 Un repositorio es un host, donde se almacenan los tags asociados a imágenes creadas.
-Un registro es un host 
+Un registro es un host que almacena repositorios.Ejemplo [Docker Hub](https://hub.docker.com/)
 A registry is a *host* -- a server that stores repositories and provides an HTTP API for [managing the uploading and downloading of repositories](https://docs.docker.com/userguide/dockerrepos/).
 
 Docker.com hosts its own [index](https://hub.docker.com/) to a central registry which contains a large number of repositories.  Having said that, the central docker registry [does not do a good job of verifying images](https://titanous.com/posts/docker-insecurity) and should be avoided if you're worried about security.
@@ -577,7 +587,21 @@ For all containers listed by name:
 docker stats $(docker ps --format '{{.Names}}')
 ```
 
+#### <i class="icon-pencil"></i>Ejercicio 0. Familiarizarnos con Docker,Docker Hub y Kitematic.
 
+$ docker images
+ 
+$ docker search ubuntu
+
+$ docker search -s 10 ubuntu
+
+$ docker run -i -t ubuntu ./bin/bash
+
+$ docker run ubuntu:14.04 echo "Hello Devops"
+
+$ docker run ubuntu ps ax
+
+$ docker ps -a
 
 #### <i class="icon-pencil"></i>Ejercicio 1.Creando el primer contenedor:
 
@@ -596,8 +620,11 @@ docker inspect "IMAGE ID"
 #### <i class="icon-pencil"></i>Ejercicio 2. Encapsulando un contenedor como servicio (Contenedor con apache2).
 
 #### <i class="icon-pencil"></i>Ejercicio 3.Creando un microservicio con Node.
+https://www.youtube.com/watch?v=PJ95WY2DqXo
+
 #### <i class="icon-pencil"></i>Ejercicio 4.Creando un contenedor MongoDb. Configuación del Volume.
 
 #### <i class="icon-pencil"></i>Ejercicio 5.Comunicando contenedores:
 https://www.docker.com/products/docker-toolbox#/tutorials
 #### <i class="icon-pencil"></i>Ejercicio 6. Docker Compose.Creando un StackFile:
+
