@@ -633,7 +633,15 @@ Recipient , Tienen acceso a los datos del Source ejempplo. Web con base de datos
 Crear el Source,"BBDD " primero 
 ```
 $ docker run -d --name dabatase postgres
+$ docker ps
 $ docker run -d -P --name website --link database:db nginx
+
+
+$ docker run -d --name dabatase postgres
+$ docker ps
+$ docker run -it --name website --link database:db ubuntu:14.04 bash
+$cat /etc/hosts
+
 ```
 Crear el Recipient usando un --link al otro contenedor.
 
