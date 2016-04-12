@@ -19,7 +19,7 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
 ## Contenedores
 
-[Your basic isolated Docker process](http://etherealmind.com/basics-docker-containers-hypervisors-coreos/).
+[Repasar las diapositivas del primer Meetup](http://es.slideshare.net/ErasmoDominguezJimen/devops-episodio-1-devopstnf?qid=a3de014b-9e2f-41fb-8d52-cb05aef9f9ac&v=&b=&from_search=1).
 
 ### Ciclo de vida 
 
@@ -32,13 +32,13 @@ Curiosidades....
 
  `docker run --rm` Eliminar un contenedor después de parar su ejecución.Contenedor de tránsito.
 
-Para mapear directorios entre Host y Contenedor -->  `docker run -v $HOSTDIR:$DOCKERDIR`.  Also see [Volumes](https://github.com/wsargent/docker-cheat-sheet/#volumes).
+Para mapear directorios entre Host y Contenedor -->  `docker run -v $HOSTDIR:$DOCKERDIR`.  Ver [volúmenes en Docker](https://github.com/wsargent/docker-cheat-sheet/#volumes) 
 
 Para eliminar el volumen asociado a un contenedor. `docker rm -v`.
 
 ## Interactuar con Contenedores.
 
-* [`docker start`](https://docs.docker.com/reference/commandline/start) starts a container so it is running.
+* [`docker start`](https://docs.docker.com/reference/commandline/start)  Inicia un contenedor que está corriendo.
 * [`docker stop`](https://docs.docker.com/reference/commandline/stop) --> Para un contenedor que está corriendo.
 * [`docker restart`](https://docs.docker.com/reference/commandline/restart) --> Para y arrranca un container.
 * [`docker pause`](https://docs.docker.com/engine/reference/commandline/pause/) pauses a running container, "freezing" it in place.
@@ -55,9 +55,9 @@ Restart policies on crashed docker instances are [covered here](http://container
 
 ### Info
 
-* [`docker ps`](https://docs.docker.com/reference/commandline/ps) shows running containers.
-* [`docker logs`](https://docs.docker.com/reference/commandline/logs) gets logs from container.  (You can use a custom log driver, but logs is only available for `json-file` and `journald` in 1.10)
-* [`docker inspect`](https://docs.docker.com/reference/commandline/inspect) looks at all the info on a container (including IP address).
+* [`docker ps`](https://docs.docker.com/reference/commandline/ps)  --> Muestra los contenedores que está corriendo.
+* [`docker logs`](https://docs.docker.com/reference/commandline/logs) --> Obtenemos los logs de un contenedor. Es posible usar drivers de terceros.
+* [`docker inspect`](https://docs.docker.com/reference/commandline/inspect) --> Obtener información completa de un contendor, incluido direccionamiento IP.
 * [`docker events`](https://docs.docker.com/reference/commandline/events) gets events from container.
 * [`docker port`](https://docs.docker.com/reference/commandline/port) shows public facing port of container.
 * [`docker top`](https://docs.docker.com/reference/commandline/top) shows running processes in container.
@@ -81,15 +81,15 @@ To enter a running container, attach a new shell process to a running container 
 
 ## Imagenes
 
-Images are just [templates for docker containers](https://docs.docker.com/engine/understanding-docker/#how-does-a-docker-image-work).
+Como ya hemos comentado muchas veces, las imágenes son  [plantillas para contenedores](https://docs.docker.com/engine/understanding-docker/#how-does-a-docker-image-work).
 
 ### Lifecycle
 
-* [`docker images`](https://docs.docker.com/reference/commandline/images) shows all images.
-* [`docker import`](https://docs.docker.com/reference/commandline/import) creates an image from a tarball.
-* [`docker build`](https://docs.docker.com/reference/commandline/build) creates image from Dockerfile.
+* [`docker images`](https://docs.docker.com/reference/commandline/images) -> Muestra todas las imágenes.
+* [`docker import`](https://docs.docker.com/reference/commandline/import) --> Crea una imagen de un fichero tgz (local o remoto).
+* [`docker build`](https://docs.docker.com/reference/commandline/build) --> Crea imagen de un Dockerfile.
 * [`docker commit`](https://docs.docker.com/reference/commandline/commit) creates image from a container, pausing it temporarily if it is running.
-* [`docker rmi`](https://docs.docker.com/reference/commandline/rmi) removes an image.
+* [`docker rmi`](https://docs.docker.com/reference/commandline/rmi) --> Para eliminar una imagen existente.
 * [`docker load`](https://docs.docker.com/reference/commandline/load) loads an image from a tar archive as STDIN, including images and tags (as of 0.7).
 * [`docker save`](https://docs.docker.com/reference/commandline/save) saves an image to a tar archive stream to STDOUT with all parent layers, tags & versions (as of 0.7).
 
@@ -136,24 +136,23 @@ $ docker run --rm -it --net iptastic --ip 203.0.113.2 nginx
 $ curl 203.0.113.2
 ```
 
-## Registry & Repository
+## Registrar imágenes en repositorios. Docker Hub
 
-A repository is a *hosted* collection of tagged images that together create the file system for a container.
-
+Un repositorio es un host, donde se almacenan los tags asociados a imágenes creadas.
+Un registro es un host 
 A registry is a *host* -- a server that stores repositories and provides an HTTP API for [managing the uploading and downloading of repositories](https://docs.docker.com/userguide/dockerrepos/).
 
 Docker.com hosts its own [index](https://hub.docker.com/) to a central registry which contains a large number of repositories.  Having said that, the central docker registry [does not do a good job of verifying images](https://titanous.com/posts/docker-insecurity) and should be avoided if you're worried about security.
 
-* [`docker login`](https://docs.docker.com/reference/commandline/login) to login to a registry.
-* [`docker search`](https://docs.docker.com/reference/commandline/search) searches registry for image.
-* [`docker pull`](https://docs.docker.com/reference/commandline/pull) pulls an image from registry to local machine.
-* [`docker push`](https://docs.docker.com/reference/commandline/push) pushes an image to the registry from local machine.
+* [`docker login`](https://docs.docker.com/reference/commandline/login)  Login en un registro
+* [`docker search`](https://docs.docker.com/reference/commandline/search) Buscar registros de imágenes.
+* [`docker pull`](https://docs.docker.com/reference/commandline/pull) -> "pull" de una imagen desde un registro a mi máquina local.
+* [`docker push`](https://docs.docker.com/reference/commandline/push) --> "push" de una imagen a un registro desde mi máquina.
 
-### Run local registry
+### Como tener un local registry
 
-You can run a local registry by using the [docker distribution](https://github.com/docker/distribution) project and looking at the [local deploy](https://github.com/docker/distribution/blob/master/docs/deploying.md) instructions.  
+Se puede tener un registro de imágenes propios usando la imagen de docker hub [docker-registry](https://github.com/docker/distribution)  y hacer [local deploy](https://github.com/docker/distribution/blob/master/docs/deploying.md) .
 
-Also see the [mailing list](https://groups.google.com/a/dockerproject.org/forum/#!forum/distribution).
 
 ## Dockerfile
 
