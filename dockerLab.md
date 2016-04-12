@@ -6,9 +6,9 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 ##  Contenidos:
 
 * [Contenedores](#Contenedores)
-* [Imagenes](#imagenes)
+* [Imágenes](#imagenes)
 * [Red](#red)
-* [Registry and Repository](#registry--repository)
+* [Registro](#registro)
 * [Dockerfile](#dockerfile)
 * [Layers](#layers)
 * [Links](#links)
@@ -135,8 +135,8 @@ $ docker run --rm -it --net iptastic --ip 203.0.113.2 nginx
 # curl the ip from any other place (assuming this is a public ip block duh)
 $ curl 203.0.113.2
 ```
-
-## Registrar imágenes en repositorios. Docker Hub
+##Registro
+### Imágenes en repositorios. Docker Hub
 
 Un repositorio es un host, donde se almacenan los tags asociados a imágenes creadas.
 Un registro es un host 
@@ -160,17 +160,82 @@ Se puede tener un registro de imágenes propios usando la imagen de docker hub [
 
 ### Instructions
 
+@TODO --> EXPLICAR EL DOCKERFILE 
+https://jsitech1.gitbooks.io/meet-docker/content/dockerfiles.html
+
 * [.dockerignore](https://docs.docker.com/reference/builder/#dockerignore-file)
-* [FROM](https://docs.docker.com/reference/builder/#from) Sets the Base Image for subsequent instructions.
-* [MAINTAINER](https://docs.docker.com/reference/builder/#maintainer) Set the Author field of the generated images..
-* [RUN](https://docs.docker.com/reference/builder/#run) execute any commands in a new layer on top of the current image and commit the results.
-* [CMD](https://docs.docker.com/reference/builder/#cmd) provide defaults for an executing container.
+* [FROM](https://docs.docker.com/reference/builder/#from) -->Establece la imagen base de la que partimos. Indica la imágen base que va a utilizar para seguir futuras instrucciones. Buscará si la imagen se encuentra localmente, en caso de que no, la descargará.
+
+```
+Sintaxis
+FROM <imagen>
+FROM <imagen>:<tag>
+
+Ejemplos
+FROM ubuntu:latest
+```
+* [MAINTAINER](https://docs.docker.com/reference/builder/#maintainer) -->Datos del Autor de la imagen.
+```
+Sintaxis
+MAINTAINER <nombre> <Correo>
+
+Ejemplo
+MAINTAINER Pepe Grillo “pepegrillo@gmail.com”
+```
+* [RUN](https://docs.docker.com/reference/builder/#run) -->Esta instrucción ejecuta cualquier comando en una capa nueva encima de una imágen y hace un commit de los resultados. Esa nueva imágen intermedia es usada para el siguiente paso en el Dockerfile.
+```
+RUN tiene 2 formatos:
+RUN <comando>, esta es la forma shell, /bin/sh -c
+RUN [“ejecutable”, “parámetro1”. “parámetro2], este es el modo ejecución
+```
+* [CMD](https://docs.docker.com/reference/builder/#cmd) --> Es la ejecución del contenedor. El objetivo de esta instrucción es proveer valores por defecto a un contenedor. Sólo puede existir una instrucción CMD en un DockerFile, si colocamos más de uno, solo el último tendrá efecto. 
+```
+CMD tiene tres formatos:
+CMD [“ejecutable”, “parámetro1”, “parámetro2”] , este es el formato de ejecución
+CMD [“parámetro1”, “parámetro2”] , parámetro por defecto para punto de entrada
+CMD comando parámetro1 parámetro2, modo shell
+```
+
+Ejemplos:
+```
+Modo Shell
+CMD echo “Esto es una prueba”
+```
+Si queremos ejecutar un comando sin un shell, debemos expresar el comando en formato JSON y dar la ruta del ejecutable. Es el formato recomendado.
+```
+CMD [“/usr/bin/service”, “httpd”, “start”]
+```
+
 * [EXPOSE](https://docs.docker.com/reference/builder/#expose) informs Docker that the container listens on the specified network ports at runtime.  NOTE: does not actually make ports accessible.
 * [ENV](https://docs.docker.com/reference/builder/#env) sets environment variable.
 * [ADD](https://docs.docker.com/reference/builder/#add) copies new files, directories or remote file to container.  Invalidates caches. Avoid `ADD` and use `COPY` instead.
 * [COPY](https://docs.docker.com/reference/builder/#copy) copies new files or directories to container.
-* [ENTRYPOINT](https://docs.docker.com/reference/builder/#entrypoint) configures a container that will run as an executable.
-* [VOLUME](https://docs.docker.com/reference/builder/#volume) creates a mount point for externally mounted volumes or other containers.
+* [ENTRYPOINT](https://docs.docker.com/reference/builder/#entrypoint) --> Configura un contenedor para comportarse como un ejecutable.
+
+```
+ENTRYPOINT tiene 2 formas:
+ENTRYPOINT [“ejecutable”, “parámetro1”, “parámetro2”], forma de ejecución
+ENTRYPOINT comando parámetro1 parámetro2, forma shell
+```
+Veamos un ejemplo de uso ENTRYPOINT en un DockerFile
+
+```
+FROM ubuntu:14.04
+ENTRYPOINT [“http”, “-v ]”
+CMD [“-p”, “80”]
+
+```
+En este ejemplo corremos httpd, en modo verbose, en el ENTRYPOINT, y los argumentos que entendamos puedan cambiar con CMD, puerto 80. Si quisiera correr el contenedor con httpd corriendo en el puerto 8080, solo tendría que ejecutar :
+```
+docker run ubuntu:14.04 -p 8080.
+```
+
+* [VOLUME](https://docs.docker.com/reference/builder/#volume) --> Crear un punto de montaje , tanto en el host como interno del contenedor. Útil para compartir datos entre contenedores, o para definir donde almacenar los datos de contenedores para base de datos.Si ejecutamos docker run pasándole un VOLUME, iniciará el contenedor con los datos que existan en la ubicación.
+```
+VOLUME [“/var/tmp”] Es un json
+VOLUME /var/tmp o un argumento "plano"
+```
+
 * [USER](https://docs.docker.com/reference/builder/#user) sets the user name for following RUN / CMD / ENTRYPOINT commands.
 * [WORKDIR](https://docs.docker.com/reference/builder/#workdir) sets the working directory.
 * [ARG](https://docs.docker.com/engine/reference/builder/#arg) defines a build-time variable.
@@ -178,17 +243,13 @@ Se puede tener un registro de imágenes propios usando la imagen de docker hub [
 * [STOPSIGNAL](https://docs.docker.com/engine/reference/builder/#stopsignal) sets the system call signal that will be sent to the container to exit.
 * [LABEL](https://docs.docker.com/engine/userguide/labels-custom-metadata/) apply key/value metadata to your images, containers, or daemons.  
 
-### Tutorial
 
-* [Flux7's Dockerfile Tutorial](http://flux7.com/blogs/docker/docker-tutorial-series-part-3-automation-is-the-word-using-dockerfile/)
+### Sitios recomendables
 
-### Examples
+* [Ejemplos](https://docs.docker.com/reference/builder/#dockerfile-examples)
+* [Best practices](https://docs.docker.com/articles/dockerfile_best-practices/)
+* [Dockerfiles best practices](http://crosbymichael.com/dockerfile-best-practices.html) / [take 2](http://crosbymichael.com/dockerfile-best-practices-take-2.html)
 
-* [Examples](https://docs.docker.com/reference/builder/#dockerfile-examples)
-* [Best practices for writing Dockerfiles](https://docs.docker.com/articles/dockerfile_best-practices/)
-* [Michael Crosby](http://crosbymichael.com/) has some more [Dockerfiles best practices](http://crosbymichael.com/dockerfile-best-practices.html) / [take 2](http://crosbymichael.com/dockerfile-best-practices-take-2.html).
-* [Building Good Docker Images](http://jonathan.bergknoff.com/journal/building-good-docker-images) / [Building Better Docker Images](http://jonathan.bergknoff.com/journal/building-better-docker-images)
-* [Managing Container Configuration with Metadata](https://speakerdeck.com/garethr/managing-container-configuration-with-metadata)
 
 ## Layers
 
