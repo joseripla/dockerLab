@@ -630,6 +630,15 @@ Existen dos tipos de contenedores:
 
 Recipient , Tienen acceso a los datos del Source ejempplo. Web con base de datos, el contenedor web es el Recipient y la bbdd es el source.
 
+Crear el Source,"BBDD " primero 
+```
+$ docker run -d --name dabatase postgres
+$ docker run -d -P --name website --link database:db nginx
+```
+Crear el Recipient usando un --link al otro contenedor.
+
+Es bueno 
+
 
 https://www.docker.com/products/docker-toolbox#/tutorials
 #### <i class="icon-pencil"></i>Ejercicio 6. Docker Compose.Creando un StackFile:
