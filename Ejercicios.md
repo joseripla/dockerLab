@@ -8,7 +8,7 @@
    
     * [Ejercicio 0](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Familiarizarnos con Docker,Docker Hub y Kitematic.
    * [Ejercicio 1](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando el primer contenedor.
-   * [Ejercicio 2](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Encapsulando un contenedor como servicio (Contenedor con apache2).
+   * [Ejercicio 2](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Encapsulando un contenedor como servidor. Contenedor [tomcat](https://hub.docker.com/_/tomcat/)
    * [Ejercicio 3](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un microservicio con Node.
    * [Ejercicio 4](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un contenedor MongoDb. Configuación del Volume.
    * [Ejercicio 5](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando una base de datos Mysql:
@@ -17,7 +17,7 @@
    * [Ejercicio 8](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose. Creando múltiples multiservicios con Node y Nginx.
    * [Ejercicio 9](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Ejecutando un jenkins en local. La base de datos se almacena en un volumen.
                            
-#### <i class="icon-pencil"></i>##Ejercicio_0. Familiarizarnos con Docker,Docker Hub y Kitematic.
+#### <i class="icon-pencil"></i>Ejercicio_0. Familiarizarnos con Docker,Docker Hub y Kitematic.
 
 Crear un primer contenedor...
 ```
@@ -37,9 +37,7 @@ $ docker run ubuntu ps ax
 
 $ docker ps -a
 ```
-También podemos buscar las imágenes en Kitematic o Docker Hub y hacer un pull and run
-
-[DockerHub](https://hub.docker.com/)
+También podemos buscar las imágenes en Kitematic o Docker [Hub](https://hub.docker.com) y hacer un pull and run.
 
 #### <i class="icon-pencil"></i>Ejercicio 1.Creando el primer contenedor:
 
@@ -55,12 +53,16 @@ docker ps
 docker inspect "IMAGE ID"
 ```
 
-#### <i class="icon-pencil"></i>Ejercicio 2. Encapsulando un contenedor como servicio (Contenedor con apache2).
+#### <i class="icon-pencil"></i>.Encapsulando un contenedor como servidor tomcat.
 
-#### <i class="icon-pencil"></i>Ejercicio 3.Creando un microservicio con Node.
+```
+docker run -it --rm -p 8888:8080 tomcat:8.0
+```
+
+#### <i class="icon-pencil"></i>Ejercicio 3. Creando un microservicio con Node.
 https://www.youtube.com/watch?v=PJ95WY2DqXo
 
-#### Opcion 1
+#### Opcion 1. Modificando el contenedor creado.
 
 ```
 $ docker pull erasmolpa/loopbackend:1.0
@@ -78,34 +80,35 @@ $ cd /loopCar/loopCar
 $ npm install
 
 $ node .
-
-# para ver que la hay un contenedor running de la imagen
-
+```
+##### para ver que la hay un contenedor running de la imagen
+```
 $ docker ps -a
 
 $ docker images 
-
+```
 ##### Paso opcional si queremos crear una imagen nueva
-
+```
 $ docker commit b26d92b24e72 erasmolpa/loopbackend:microservice
 
 $ docker images
-
+```
 #### Sobre la misma imagen sería:
-
+```
 $ docker tag sha256:b3bdb  erasmolpa/loopbackend:microservice
-
+```
 #### Para publicar la imagen, sino nos hemos logeado aun 
-
+```
 $ docker login --username=username --email=user@gmail.com
-
+```
 ##### Publicamos la imagen 
-
+```
 $ docker push erasmolpa/loopbackend:microservice
 
 $ docker stop b26d92b24e72 Paramos el contenedor de microservice para arrancarlo otra vez
-
+```
 ##### Mapeamos el puerto interno 3000 al externo 9000
+```
 $ docker run -it -p 9000:3000 erasmolpa/loopbackend:microservice ./bin/bash
 
 $ cd microservice/loopCar/looCar
@@ -115,22 +118,23 @@ $ node .
  en el navegador abrir http://192.168.99.100:9000/explorer/
 ```
 
-#Ejecutamos la imagen de loopCar
+#### Opcion 2. Montando el contenedor con un volumen.
 
 ```
-$ cd Public/Dockers/loopback/
+$ mkdir directorio
+
+$ cd direcrtorio
+
+$ git clone https://github.com/erasmolpa/loopCar.git
+
+$ cd /loopCar/loopCar
   
-2)  docker run -it -v /Users/erasmodominguezjimenez/Documents/jsBases/strongloopDockerApp/loopCar:/host -p 9000:3000 erasmolpa/loopbackend:latest ./bin/bash
-
-3) en la carpeta host dentro de la imagen cd host
-
-4) node . Arranca la app en 192.168.99.100:9000/explorer/
-
-5) hacer el ejercicio de ejecutar otro microservicio en otros puertos distintos. 8000:2000 p ejemplo.
-
-6) Cambiamos el Dockerfile y dentro del directorio hacemos 
-
-docker build --tag "erasmolpa/loopbackend:1.0" .
+$ docker run -it -v /directorio/loopCar:/host -p 9000:3000 erasmolpa/loopbackend:latest ./bin/bash
+```
+Entramos a la carpeta host dentro del contenedor, y es ahí donde hemos dicho que monte el código.
+```
+$ cd host/"directorioCodigo"
+$ node . Arranca la app en 192.168.99.100:9000/explorer/
 ```
 
 #### <i class="icon-pencil"></i>Ejercicio 4.Creando un contenedor MongoDb. Configuación del Volume.
@@ -208,7 +212,7 @@ http://192.168.99.100:8080/wp-admin/install.php
 
 ```
 
-#### <i class="icon-pencil"></i>##Ejercicio_7. Docker Compose. Creando múltiples multiservicios con Node y Nginx:
+#### <i class="icon-pencil"></i>Ejercicio_7. Docker Compose. Creando múltiples multiservicios con Node y Nginx:
 
 
 #### <i class="icon-pencil"></i>Ejercicio 8. Ejecutando un jenkins en local. La base de datos se almacena en un volumen .
@@ -219,54 +223,4 @@ $ docker run --name jenkins -p 8080:8080 -p 50000:50000 -v /Users/erasmodomingue
 
 Esto monta jenkins en http://192.168.99.100:8080/
 ```
-Que pasaría si modificamos el Jenkins, instalando plugins? . Al parar el contenedor y volver a arrancarlo que pasaría.? 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#Ejecutamos la imagen de loopCar
-
-1) cd Public/Dockers/loopback/
-  
-2)  docker run -it -v /Users/erasmodominguezjimenez/Documents/jsBases/strongloopDockerApp/loopCar:/host -p 9000:3000 erasmolpa/loopbackend:latest ./bin/bash
-
-3) en la carpeta host dentro de la imagen cd host
-
-4) node . Arranca la app en 192.168.99.100:9000/explorer/
-
-5) hacer el ejercicio de ejecutar otro microservicio en otros puertos distintos. 8000:2000 p ejemplo.
-
-6) Cambiamos el Dockerfile y dentro del directorio hacemos 
-
-docker build --tag "erasmolpa/loopbackend:1.0" .
-
-#Ejecutamos la imagen de MongoDB
-
-1) docker run -d --name mongoDB -p 27017:27017 -p 28017:28017 erasmolpa/mongo --httpinterface 
-
-
-Esto monta el mongobd en 192.168.99.100:27017 y la consola en 192.168.99.100:28017
-
-
-#Ejecutamos la imagen de Jenkins:
-docker run --name jenkins -p 8080:8080 -p 50000:50000 -v /Users/erasmodominguezjimenez/Public/Dockers/dockerVolume/:/var/jenkins_home erasmolpa/jenkins:latest
-
-Esto monta jenkins en http://192.168.99.100:8080/
+Que pasaría si modificamos el Jenkins, instalando plugins? . Al parar el contenedor y volver a arrancarlo que pasaría.?
