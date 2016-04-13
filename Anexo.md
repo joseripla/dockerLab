@@ -2,7 +2,7 @@
 
 #  Anexo
 
-##  Contenidos:
+##  Contenido:
 
 * Introducción del siguiente laboratorio.
 	* Algunos [comandos](#comandos) útiles.      
