@@ -16,14 +16,7 @@
    * Ejercicio 6. Docker Compose.Creando un Wordpress con MariaDb:
    * Ejercicio 7. Docker Compose. Creando múltiples multiservicios con Node y Nginx:
    * Ejercicio 8. Ejecutando un jenkins en local. La base de datos se almacena en un volumen 
-* [Anexo](https://github.com/erasmolpa/dockerLab/blob/master/Anexo.md)
-   * Algunos comandos útiles.
-   * Introducción del siguiente laboratorio.
-      * Docker Compose. Orquestando Servicios.
-      * [Docker Cloud](https://cloud.docker.com/). Plataforma para desplegar contenedores.
-      * Docker y la IC. 
                            
-
 #### <i class="icon-pencil"></i>Ejercicio 0. Familiarizarnos con Docker,Docker Hub y Kitematic.
 
 Crear un primer contenedor...
