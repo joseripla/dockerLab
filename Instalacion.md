@@ -35,8 +35,11 @@ Si tienes dudas sobre la instalacion.... [installation](https://docs.docker.com/
    
    Una vez instalada la máquina virtual se puede ajustar la RAM etc..
    
-   Los comandos a ejecutar para instlar son:
-    * vagrant init erasmolpa/UbuntuDocker15GB;
-    * vagrant up --provider virtualbox;
+   Los comandos a ejecutar para instalar son:
+    
+    ```
+    $ vagrant init erasmolpa/UbuntuDocker15GB;
+    $ vagrant up --provider virtualbox;
+    ```
    Esto inicia la máquina virtual en virtual Box.
      * IMPORTANTE el usuario y password son IGUALES :) 
