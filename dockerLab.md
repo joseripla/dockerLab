@@ -20,9 +20,10 @@ https://jsitech1.gitbooks.io/meet-docker/content/mejores_practicas_dockerfiles.h
 * [Dockerfile](#dockerfile)
       * [Best Practices](#best-practices)
 * [Registro](#registro)
-* [Tips](#tips)
+
 * [Ejercicios](#ejercicios)
-* [Anexo.Introducción del siguiente laboratorio ](#anex) 
+* [AnexoA](#anexoA)
+* [Anexo.Introducción del siguiente laboratorio ](#anexoB) 
       * Docker Compose. Orquestando Servicios.
       * Docker Cloud. Plataforma para desplegar contenedores.
       * Docker y la IC. https://circleci.com/docs/docker/
@@ -447,8 +448,125 @@ There's also work on [user namespaces](https://s3hh.wordpress.com/2013/07/19/cre
 
 To enable user namespaces ("remap the userns") in Ubuntu 15.10, [follow the blog example](https://raesene.github.io/blog/2016/02/04/Docker-User-Namespaces/).
 
+## Ejercicios
 
-## Tips
+#### <i class="icon-pencil"></i>Ejercicio 0. Familiarizarnos con Docker,Docker Hub y Kitematic.
+
+Crear un primer contenedor...
+```
+$ docker images
+ 
+$ docker search ubuntu
+
+$ docker search -s 10 ubuntu
+
+$ docker run -i -t ubuntu ./bin/bash
+```
+Otra forma:
+```
+$ docker run ubuntu:14.04 echo "Hello Devops"
+
+$ docker run ubuntu ps ax
+
+$ docker ps -a
+```
+También podemos buscar las imágenes en Kitematic o Docker Hub y hacer un pull and run
+
+[DockerHub](https://hub.docker.com/)
+
+#### <i class="icon-pencil"></i>Ejercicio 1.Creando el primer contenedor:
+
+```
+sudo docker run -i -t --name ubuntudocker ubuntu:latest /bin/bash
+
+# para ver la imagen corriendo
+
+docker ps
+
+#para ver toda la información detallada del contenedor
+
+docker inspect "IMAGE ID"
+```
+
+#### <i class="icon-pencil"></i>Ejercicio 2. Encapsulando un contenedor como servicio (Contenedor con apache2).
+
+#### <i class="icon-pencil"></i>Ejercicio 3.Creando un microservicio con Node.
+https://www.youtube.com/watch?v=PJ95WY2DqXo
+
+#### <i class="icon-pencil"></i>Ejercicio 4.Creando un contenedor MongoDb. Configuación del Volume.
+
+Existen varias alternativas:
+
+Crear nuestro propio DockerFile:
+```
+# Crear el directorio de trabajo
+$ mkdir mongodb
+$ cd mongodb
+$ vim Dockerfile y copiar el contenido del [Dockerfile](https://github.com/erasmolpa/mongoDocker.git)
+$ docker build -t mongodb . #donde mongodb en este caso es el nombre de la imagen
+$ docker run -d --name mongodb -p 27017:27017 -p 28017:28017 mongodb  --httpinterface 
+```
+
+El contenido de ese DockerFile es idéntico al propietario.Podríamos modificarlo para ponerlo a nuestras necesidades.
+```
+$ docker search mongodb 
+```
+Una vez encontrada la imagen que queremos lanzar podemos hacer un pull y un run o directamente hacer un run.
+
+```
+$ docker  pull tutum/mongodb # para bajarnos la imagen de tutum/mongodb que es la oficial # Paso alternativo si queremos hacer un pull primero.
+```
+```
+$ docker run -d --name mongoDB -p 27017:27017 -p 28017:28017 erasmolpa/mongo --httpinterface 
+```
+
+Esto monta el mongobd en 192.168.99.100:27017 y la consola en 192.168.99.100:28017
+
+#### <i class="icon-pencil"></i>Ejercicio 5.Comunicando contenedores:
+https://www.docker.com/products/docker-toolbox#/tutorials
+#### <i class="icon-pencil"></i>Ejercicio 6. Docker Compose.Creando un Wordpress con MariaDb:
+
+ Accediendo al [hub oficial de wordpress](https://hub.docker.com/r/library/wordpress/) vemos que proponen dos caminos para crear una web wordpress:
+
+Con dos contenedores que se comunican por link container...
+
+```
+ docker run --name some-wordpress --link some-mysql:mysql -d wordpress
+```
+
+O con docker compose, creando el docker-compose.yml con el siguiente contenido:
+
+```
+wordpress:
+  image: wordpress
+  links:
+    - db:mysql
+  ports:
+    - 8080:80
+
+db:
+  image: mariadb
+  environment:
+    MYSQL_ROOT_PASSWORD: example
+```
+
+Una vez creado el compose, lanzar:
+```
+docker-compose up
+```
+Y ya puedes instalar tu wordpress... 
+```
+Ojo, he puesto la ip de mi instancia de docker..
+
+http://192.168.99.100:8080/wp-admin/install.php
+
+```
+
+#### <i class="icon-pencil"></i>Ejercicio 7. Docker Compose. Creando múltiples multiservicios con Node y Nginx:
+
+
+
+## Anexo
 
 Sources:
 
@@ -592,120 +710,3 @@ For all containers listed by name:
 ```
 docker stats $(docker ps --format '{{.Names}}')
 ```
-
-#### <i class="icon-pencil"></i>Ejercicio 0. Familiarizarnos con Docker,Docker Hub y Kitematic.
-
-$ docker images
- 
-$ docker search ubuntu
-
-$ docker search -s 10 ubuntu
-
-$ docker run -i -t ubuntu ./bin/bash
-
-$ docker run ubuntu:14.04 echo "Hello Devops"
-
-$ docker run ubuntu ps ax
-
-$ docker ps -a
-
-#### <i class="icon-pencil"></i>Ejercicio 1.Creando el primer contenedor:
-
-```
-sudo docker run -i -t --name ubuntudocker ubuntu:latest /bin/bash
-
-# para ver la imagen corriendo
-
-docker ps
-
-#para ver toda la información detallada del contenedor
-
-docker inspect "IMAGE ID"
-```
-
-#### <i class="icon-pencil"></i>Ejercicio 2. Encapsulando un contenedor como servicio (Contenedor con apache2).
-
-#### <i class="icon-pencil"></i>Ejercicio 3.Creando un microservicio con Node.
-https://www.youtube.com/watch?v=PJ95WY2DqXo
-
-#### <i class="icon-pencil"></i>Ejercicio 4.Creando un contenedor MongoDb. Configuación del Volume.
-
-Existen varias alternativas:
-
-Crear nuestro propio DockerFile:
-```
-# Crear el directorio de trabajo
-$ mkdir mongodb
-$ cd mongodb
-$ vim Dockerfile y copiar el contenido del [Dockerfile](https://github.com/erasmolpa/mongoDocker.git)
-$ docker build -t mongodb . #donde mongodb en este caso es el nombre de la imagen
-$ docker run -d --name mongodb -p 27017:27017 -p 28017:28017 mongodb  --httpinterface 
-```
-
-El contenido de ese DockerFile es idéntico al propietario.Podríamos modificarlo para ponerlo a nuestras necesidades.
-```
-$ docker search mongodb 
-```
-Una vez encontrada la imagen que queremos lanzar podemos hacer un pull y un run o directamente hacer un run.
-
-```
-$ docker  pull tutum/mongodb # para bajarnos la imagen de tutum/mongodb que es la oficial # Paso alternativo si queremos hacer un pull primero.
-```
-```
-$ docker run -d --name mongoDB -p 27017:27017 -p 28017:28017 erasmolpa/mongo --httpinterface 
-```
-
-Esto monta el mongobd en 192.168.99.100:27017 y la consola en 192.168.99.100:28017
-
-#### <i class="icon-pencil"></i>Ejercicio 5.Comunicando contenedores:
-https://www.docker.com/products/docker-toolbox#/tutorials
-#### <i class="icon-pencil"></i>Ejercicio 6. Docker Compose.Creando un Wordpress con MariaDb:
-
- Accediendo al [hub oficial de wordpress](https://hub.docker.com/r/library/wordpress/) vemos que proponen dos caminos para crear una web wordpress:
-
-Con dos contenedores que se comunican por link container...
-
-```
- docker run --name some-wordpress --link some-mysql:mysql -d wordpress
-```
-
-O con docker compose, creando el docker-compose.yml con el siguiente contenido:
-
-```
-wordpress:
-  image: wordpress
-  links:
-    - db:mysql
-  ports:
-    - 8080:80
-
-db:
-  image: mariadb
-  environment:
-    MYSQL_ROOT_PASSWORD: example
-```
-
-Una vez creado el compose, lanzar:
-```
-docker-compose up
-```
-Y ya puedes instalar tu wordpress... 
-```
-Ojo, he puesto la ip de mi instancia de docker..
-
-http://192.168.99.100:8080/wp-admin/install.php
-
-```
-
-#### <i class="icon-pencil"></i>Ejercicio 7. Docker Compose. Creando múltiples multiservicios con Node y Nginx:
-
-
-
-
-
-
-
-
-
-
-
