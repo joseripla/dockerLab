@@ -10,7 +10,7 @@
    * [Ejercicio 1](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando el primer contenedor.
    * [Ejercicio 2](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Encapsulando un contenedor como servidor. Contenedor [tomcat](https://hub.docker.com/_/tomcat/)
    * [Ejercicio 3](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un microservicio con Node.
-   * [Ejercicio 4](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un contenedor MongoDb. Configuación del Volume.
+   * [Ejercicio 4](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un contenedor MongoDb.Básico.
    * [Ejercicio 5](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando una base de datos Mysql:
    * [Ejercicio 6](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Comunicando contenedores:
    * [Ejercicio 7](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md#Ejercicio_7) .Docker Compose.Creando un Wordpress con MariaDb:
@@ -137,7 +137,7 @@ $ cd host/"directorioCodigo"
 $ node . Arranca la app en 192.168.99.100:9000/explorer/
 ```
 
-#### <i class="icon-pencil"></i>Ejercicio 4.Creando un contenedor MongoDb. Configuación del Volume.
+#### <i class="icon-pencil"></i>Ejercicio 4.Creando un contenedor MongoDb.Básico.
 
 En la documentación oficial de Docker , explican como [Dockerizar](https://docs.docker.com/engine/examples/mongodb/) un mongodb.
 
