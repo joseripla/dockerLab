@@ -7,7 +7,6 @@
  * [Images](#imagenes)
  
  * [Containers](#Contenedores)
- 
        * [Layers](#layers)
        * [Links](#links)
        * [Volumes](#volumes)
