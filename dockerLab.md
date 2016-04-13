@@ -495,6 +495,24 @@ docker inspect "IMAGE ID"
 #### <i class="icon-pencil"></i>Ejercicio 3.Creando un microservicio con Node.
 https://www.youtube.com/watch?v=PJ95WY2DqXo
 
+#Ejecutamos la imagen de loopCar
+
+```
+$ cd Public/Dockers/loopback/
+  
+2)  docker run -it -v /Users/erasmodominguezjimenez/Documents/jsBases/strongloopDockerApp/loopCar:/host -p 9000:3000 erasmolpa/loopbackend:latest ./bin/bash
+
+3) en la carpeta host dentro de la imagen cd host
+
+4) node . Arranca la app en 192.168.99.100:9000/explorer/
+
+5) hacer el ejercicio de ejecutar otro microservicio en otros puertos distintos. 8000:2000 p ejemplo.
+
+6) Cambiamos el Dockerfile y dentro del directorio hacemos 
+
+docker build --tag "erasmolpa/loopbackend:1.0" .
+```
+
 #### <i class="icon-pencil"></i>Ejercicio 4.Creando un contenedor MongoDb. Configuación del Volume.
 
 En la documentación oficial de Docker , explican como [Dockerizar](https://docs.docker.com/engine/examples/mongodb/) un mongodb.
