@@ -5,9 +5,8 @@
 
 * [Instalación](https://github.com/erasmolpa/dockerLab/blob/master/Instalacion.md)
 * [Arquitectura](#arquitectura)
-* 
-* https://github.com/erasmolpa/dockerLab/blob/master/Principal.md#layers
-* [Imágenes](#imagenes)
+* [Tutorial](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md)
+* [Imágenes](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#imagenes)
 * [Contenedores](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#Contenedores)
      * [Layers](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#layers)
      *  [Links](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#links)
