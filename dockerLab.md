@@ -53,7 +53,8 @@ https://jsitech1.gitbooks.io/meet-docker/content/mejores_practicas_dockerfiles.h
 Curiosidades....
 
  `docker run --rm` Eliminar un contenedor después de parar su ejecución.Contenedor de tránsito.
-
+ `docker run -i -t /bin/bash` Arrancamos un docker en modo terminal. -i para conectar a STDIN y -t para decir que entramos en modo terminal.
+ 
 Para mapear directorios entre Host y Contenedor -->  `docker run -v $HOSTDIR:$DOCKERDIR`.  Ver [volúmenes en Docker](https://github.com/wsargent/docker-cheat-sheet/#volumes) 
 
 Para eliminar el volumen asociado a un contenedor. `docker rm -v`.
@@ -63,7 +64,7 @@ Para eliminar el volumen asociado a un contenedor. `docker rm -v`.
 * [`docker start`](https://docs.docker.com/reference/commandline/start)  --> Inicia un contenedor que está corriendo.
 * [`docker stop`](https://docs.docker.com/reference/commandline/stop) --> Para un contenedor que está corriendo.
 * [`docker restart`](https://docs.docker.com/reference/commandline/restart) --> Para y arrranca un container.
-* [`docker pause`](https://docs.docker.com/engine/reference/commandline/pause/) --> "congela" un conteneder tal cuál está en ese momento.
+* [`docker pause`](https://docs.docker.com/engine/reference/commandline/pause/) --> "congela" un conteneder tal cuál está en ese momento. Pausa todo sus procesos.
 * [`docker unpause`](https://docs.docker.com/engine/reference/commandline/unpause/)  --> Descongela el contenedor y lo arranca .
 * [`docker wait`](https://docs.docker.com/reference/commandline/wait) blocks until running container stops.
 * [`docker kill`](https://docs.docker.com/reference/commandline/kill) sends a SIGKILL to a running container.
@@ -110,6 +111,11 @@ $ sudo docker exec -it mysql_container /bin/bash #Para entrar usando en nombre,d
 ```
 
 ## Layers
+El sistema de ficheros de Docker esta basado en Capas. Ya se explicó este concepto en la presentación de Arquitectura. 
+
+Docker crea una capa superior de escritura, donde se almacenan todos todos los cambios que hacemos sobre una imagen Padre.
+
+La imagen Padre es de sólo lectura.
 
 The versioned filesystem in Docker is based on layers.  They're like [git commits or changesets for filesystems](https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/).
 
@@ -232,7 +238,7 @@ Como ya hemos comentado muchas veces, las imágenes son  [plantillas para conten
 * [`docker images`](https://docs.docker.com/reference/commandline/images) -> Muestra todas las imágenes.
 * [`docker import`](https://docs.docker.com/reference/commandline/import) --> Crea una imagen de un fichero tgz (local o remoto).
 * [`docker build`](https://docs.docker.com/reference/commandline/build) --> Crea imagen de un Dockerfile.
-* [`docker commit`](https://docs.docker.com/reference/commandline/commit) creates image from a container, pausing it temporarily if it is running.
+* [`docker commit`](https://docs.docker.com/reference/commandline/commit) -> Guarda los cambios hechos en un contenedor como una nueva imagen.Crea una imagen a partir del contenedor.
 * [`docker rmi`](https://docs.docker.com/reference/commandline/rmi) --> Para eliminar una imagen existente.
 * [`docker load`](https://docs.docker.com/reference/commandline/load) loads an image from a tar archive as STDIN, including images and tags (as of 0.7).
 * [`docker save`](https://docs.docker.com/reference/commandline/save) saves an image to a tar archive stream to STDOUT with all parent layers, tags & versions (as of 0.7).
@@ -280,6 +286,9 @@ $ docker run --rm -it --net iptastic --ip 203.0.113.2 nginx
 $ curl 203.0.113.2
 ```
 ##Registro
+
+Como crear, versionar y publicar nuestras propias imágenes? en el siguiente [enlace](https://docs.docker.com/mac/step_six/) se explica como .
+
 ### Imágenes en repositorios. Docker Hub
 
 Un repositorio es un host, donde se almacenan los tags asociados a imágenes creadas.
@@ -494,6 +503,61 @@ docker inspect "IMAGE ID"
 
 #### <i class="icon-pencil"></i>Ejercicio 3.Creando un microservicio con Node.
 https://www.youtube.com/watch?v=PJ95WY2DqXo
+
+#### Opcion 1
+
+```
+$ docker pull erasmolpa/loopbackend:1.0
+
+$ docker run -it erasmolpa/loopbackend ./bin/bash
+
+$ mkdir microservice
+
+$ cd microservice
+
+$ git clone https://github.com/erasmolpa/loopCar.git
+
+$ cd /loopCar/loopCar
+
+$ npm install
+
+$ node .
+
+# para ver que la hay un contenedor running de la imagen
+
+$ docker ps -a
+
+$ docker images 
+
+##### Paso opcional si queremos crear una imagen nueva
+
+$ docker commit b26d92b24e72 erasmolpa/loopbackend:microservice
+
+$ docker images
+
+#### Sobre la misma imagen sería:
+
+$ docker tag sha256:b3bdb  erasmolpa/loopbackend:microservice
+
+#### Para publicar la imagen, sino nos hemos logeado aun 
+
+$ docker login --username=username --email=user@gmail.com
+
+##### Publicamos la imagen 
+
+$ docker push erasmolpa/loopbackend:microservice
+
+$ docker stop b26d92b24e72 Paramos el contenedor de microservice para arrancarlo otra vez
+
+##### Mapeamos el puerto interno 3000 al externo 9000
+$ docker run -it -p 9000:3000 erasmolpa/loopbackend:microservice ./bin/bash
+
+$ cd microservice/loopCar/looCar
+
+$ node .
+
+ en el navegador abrir http://192.168.99.100:9000/explorer/
+```
 
 #Ejecutamos la imagen de loopCar
 
