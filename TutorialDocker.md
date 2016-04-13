@@ -13,7 +13,7 @@
        * [Exposing Ports](#exposing-ports)
        * [Red](#red)
  * [Dockerfile](#dockerfile)
-        * [Best Practices](#best-practices)
+       * [Best Practices](#best-practices)
  * [Registry](#registro)
     
 ## Contenedores
