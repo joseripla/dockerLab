@@ -1,3 +1,191 @@
+## Contenedores
+
+### Ciclo de vida 
+
+* [`docker create`](https://docs.docker.com/reference/commandline/create) -> Crea un contenedor pero no lo arranca
+* [`docker run`](https://docs.docker.com/reference/commandline/run)  -> Crea y arranca un contenedor.
+* [`docker rm`](https://docs.docker.com/reference/commandline/rm)  -> Elimina un contenedor.
+* [`docker update`](https://docs.docker.com/engine/reference/commandline/update/) --> Actualizar recursos de un contenedor. ejm: cambio en memoria size.
+
+Curiosidades....
+
+ `docker run --rm` Eliminar un contenedor después de parar su ejecución.Contenedor de tránsito.
+ `docker run -i -t /bin/bash` Arrancamos un docker en modo terminal. -i para conectar a STDIN y -t para decir que entramos en modo terminal.
+ 
+Para mapear directorios entre Host y Contenedor -->  `docker run -v $HOSTDIR:$DOCKERDIR`.  Ver [volúmenes en Docker](https://github.com/wsargent/docker-cheat-sheet/#volumes) 
+
+Para eliminar el volumen asociado a un contenedor. `docker rm -v`.
+
+## Interactuar con Contenedores.
+
+* [`docker start`](https://docs.docker.com/reference/commandline/start)  --> Inicia un contenedor que está corriendo.
+* [`docker stop`](https://docs.docker.com/reference/commandline/stop) --> Para un contenedor que está corriendo.
+* [`docker restart`](https://docs.docker.com/reference/commandline/restart) --> Para y arrranca un container.
+* [`docker pause`](https://docs.docker.com/engine/reference/commandline/pause/) --> "congela" un conteneder tal cuál está en ese momento. Pausa todo sus procesos.
+* [`docker unpause`](https://docs.docker.com/engine/reference/commandline/unpause/)  --> Descongela el contenedor y lo arranca .
+* [`docker wait`](https://docs.docker.com/reference/commandline/wait) blocks until running container stops.
+* [`docker kill`](https://docs.docker.com/reference/commandline/kill) sends a SIGKILL to a running container.
+* [`docker attach`](https://docs.docker.com/reference/commandline/attach) will connect to a running container.
+
+If you want to integrate a container with a [host process manager](https://docs.docker.com/articles/host_integration/), start the daemon with `-r=false` then use `docker start -a`.
+
+If you want to expose container ports through the host, see the [exposing ports](#exposing-ports) section.
+
+Restart policies on crashed docker instances are [covered here](http://container42.com/2014/09/30/docker-restart-policies/).
+
+### Info
+
+* [`docker ps`](https://docs.docker.com/reference/commandline/ps)  --> Muestra los contenedores que está corriendo.
+* [`docker logs`](https://docs.docker.com/reference/commandline/logs) --> Obtenemos los logs de un contenedor. Es posible usar drivers de terceros.
+* [`docker inspect`](https://docs.docker.com/reference/commandline/inspect) --> Obtener información completa de un contendor, incluido direccionamiento IP.
+* [`docker events`](https://docs.docker.com/reference/commandline/events) gets events from container.
+* [`docker port`](https://docs.docker.com/reference/commandline/port) shows public facing port of container.
+* [`docker top`](https://docs.docker.com/reference/commandline/top) shows running processes in container.
+* [`docker stats`](https://docs.docker.com/reference/commandline/stats) shows containers' resource usage statistics.
+* [`docker diff`](https://docs.docker.com/reference/commandline/diff) shows changed files in the container's FS.
+
+`docker ps -a` shows running and stopped containers.
+
+`docker stats --all` shows a running list of containers.
+
+### Import / Export
+
+* [`docker cp`](https://docs.docker.com/reference/commandline/cp) copies files or folders between a container and the local filesystem..
+* [`docker export`](https://docs.docker.com/reference/commandline/export) turns container filesystem into tarball archive stream to STDOUT.
+
+### Executing Commands
+
+* [`docker exec`](https://docs.docker.com/reference/commandline/exec) --> Para Ejecutar un comando en el contenedor.
+
+Una de las necesidades más habituales es comunicarse con el contenedor.Esto se puede hacer con exec o attach.
+```
+$ sudo docker attach 665b4a1e17b6     #Para entrar usando el ID=665b4a1e17b6
+$ sudo docker attach mysql_container  #Para entrar usando en nombre,donde el nombre es mysql_container
+```
+```
+$ sudo docker exec -i -t 665b4a1e17b6  #Para entrar usando el ID=665b4a1e17b6  
+$ sudo docker exec -it mysql_container /bin/bash #Para entrar usando en nombre,donde el nombre es mysql_container
+```
+
+## Layers
+El sistema de ficheros de Docker esta basado en Capas. Ya se explicó este concepto en la presentación de Arquitectura. 
+
+Docker crea una capa superior de escritura, donde se almacenan todos todos los cambios que hacemos sobre una imagen Padre.
+
+La imagen Padre es de sólo lectura.
+
+The versioned filesystem in Docker is based on layers.  They're like [git commits or changesets for filesystems](https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/).
+
+Note that if you're using [aufs](https://en.wikipedia.org/wiki/Aufs) as your filesystem, Docker does not always remove data volumes containers layers when you delete a container!  See [PR 8484](https://github.com/docker/docker/pull/8484) for more details.
+
+## Links
+
+Links are how Docker containers talk to each other [through TCP/IP ports](https://docs.docker.com/userguide/dockerlinks/).  [Linking into Redis](https://docs.docker.com/examples/running_redis_service/) and [Atlassian](https://blogs.atlassian.com/2013/11/docker-all-the-things-at-atlassian-automation-and-wiring/) show worked examples.  You can also (in 0.11) resolve [links by hostname](https://docs.docker.com/userguide/dockerlinks/#updating-the-etchosts-file).
+
+NOTE: If you want containers to ONLY communicate with each other through links, start the docker daemon with `-icc=false` to disable inter process communication.
+
+If you have a container with the name CONTAINER (specified by `docker run --name CONTAINER`) and in the Dockerfile, it has an exposed port:
+
+```
+EXPOSE 1337
+```
+
+Then if we create another container called LINKED like so:
+
+```
+docker run -d --link CONTAINER:ALIAS --name LINKED user/wordpress
+```
+
+Then the exposed ports and aliases of CONTAINER will show up in LINKED with the following environment variables:
+
+```
+$ALIAS_PORT_1337_TCP_PORT
+$ALIAS_PORT_1337_TCP_ADDR
+```
+
+And you can connect to it that way.
+
+To delete links, use `docker rm --link `.
+
+If you want to link across docker hosts then you should look at [Swarm](https://docs.docker.com/swarm/). This [link on stackoverflow](https://stackoverflow.com/questions/21283517/how-to-link-docker-services-across-hosts) provides some good information on different patterns for linking containers across docker hosts.
+
+## Volumes
+
+Un Volumen es asignar un directorio a un container para almacenar datos.
+
+* Los cambios son excluidos cuando se actualiza una imagen.
+* Se persiste cuando un contenedor se borra.
+* Se puede mapear a una carpeta del host.
+* Pueden ser compartidos entre contenedores.
+
+Docker volumes are [free-floating filesystems](https://docs.docker.com/userguide/dockervolumes/).  They don't have to be connected to a particular container.  You should use volumes mounted from [data-only containers](https://medium.com/@ramangupta/why-docker-data-containers-are-good-589b3c6c749e) for portability.
+
+### Lifecycle
+
+* [`docker volume create`](https://docs.docker.com/engine/reference/commandline/volume_create/)
+* [`docker volume rm`](https://docs.docker.com/engine/reference/commandline/volume_rm/)
+
+### Info
+
+* [`docker volume ls`](https://docs.docker.com/engine/reference/commandline/volume_ls/)
+* [`docker volume inspect`](https://docs.docker.com/engine/reference/commandline/volume_inspect/)
+
+Volumes are useful in situations where you can't use links (which are TCP/IP only).  For instance, if you need to have two docker instances communicate by leaving stuff on the filesystem.
+
+You can mount them in several docker containers at once, using `docker run --volumes-from`.
+
+Because volumes are isolated filesystems, they are often used to store state from computations between transient containers.  That is, you can have a stateless and transient container run from a recipe, blow it away, and then have a second instance of the transient container pick up from where the last one left off.
+
+See [advanced volumes](http://crosbymichael.com/advanced-docker-volumes.html) for more details.  Container42 is [also helpful](http://container42.com/2014/11/03/docker-indepth-volumes/).
+
+As of 1.3, you can [map MacOS host directories as docker volumes](https://docs.docker.com/userguide/dockervolumes/#mount-a-host-directory-as-a-data-volume) through boot2docker:
+
+```
+docker run -v /Users/wsargent/myapp/src:/src
+```
+
+You can also use remote NFS volumes if you're [feeling brave](https://web.archive.org/web/20150306065158/http://www.tech-d.net/2014/03/29/docker-quicktip-4-remote-volumes/).
+
+You may also consider running data-only containers as described [here](http://container42.com/2013/12/16/persistent-volumes-with-docker-container-as-volume-pattern/) to provide some data portability.
+
+## Exposing ports
+
+Exposing incoming ports through the host container is [fiddly but doable](https://docs.docker.com/reference/run/#expose-incoming-ports).
+
+This is done by mapping the container port to the host port (only using localhost interface) using `-p`:
+
+```
+docker run -p 127.0.0.1:$HOSTPORT:$CONTAINERPORT --name CONTAINER -t someimage
+```
+
+You can tell Docker that the container listens on the specified network ports at runtime by using [EXPOSE](https://docs.docker.com/reference/builder/#expose):
+
+```
+EXPOSE <CONTAINERPORT>
+```
+
+But note that EXPOSE does not expose the port itself, only `-p` will do that.
+
+If you're running Docker in Virtualbox, you then need to forward the port there as well, using [forwarded_port](https://docs.vagrantup.com/v2/networking/forwarded_ports.html).  It can be useful to define something in Vagrantfile to expose a range of ports so that you can dynamically map them:
+
+```
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  ...
+
+  (49000..49900).each do |port|
+    config.vm.network :forwarded_port, :host => port, :guest => port
+  end
+
+  ...
+end
+```
+
+If you forget what you mapped the port to on the host container, use `docker port` to show it:
+
+```
+docker port CONTAINER $CONTAINERPORT
+```
+
 ## Imagenes
 
 Como ya hemos comentado muchas veces, las imágenes son  [plantillas para contenedores](https://docs.docker.com/engine/understanding-docker/#how-does-a-docker-image-work).
