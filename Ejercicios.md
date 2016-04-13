@@ -14,7 +14,7 @@
    * [Ejercicio 5](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando una base de datos Mysql.
    * [Ejercicio 6](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Comunicando contenedores: Links Containers.
    * [Ejercicio 7](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose.Creando un Wordpress con MariaDb.
-   * [Ejercicio 8](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) . Docker Compose. Node , Nginx y Redis. Microservicios.
+   * [Ejercicio 8](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose. Node , Nginx y Redis. Microservicios.
    * [Ejercicio 9](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Ejecutando un jenkins en local. La base de datos se almacena en un volumen.
                            
 #### <i class="icon-pencil"></i>Ejercicio 0. Familiarizarnos con Docker,Docker Hub y Kitematic.
