@@ -630,6 +630,24 @@ https://www.youtube.com/watch?v=PJ95WY2DqXo
 
 #### <i class="icon-pencil"></i>Ejercicio 4.Creando un contenedor MongoDb. Configuación del Volume.
 
+Existen varias alternativas:
+
+Crear nuestro propio DockerFile:
+```
+# Crear el directorio de trabajo
+$ mkdir mongodb
+$ cd mongodb
+$ vim Dockerfile y copiar el contenido del [Dockerfile](https://github.com/erasmolpa/mongoDocker.git)
+$ docker build-t mongodb .
+```
+
+El contenido de ese DockerFile es idéntico al propietario.Podríamos modificarlo para ponerlo a nuestras necesidades.
+
+$ docker run -d --name mongoDB -p 27017:27017 -p 28017:28017 erasmolpa/mongo --httpinterface 
+
+
+Esto monta el mongobd en 192.168.99.100:27017 y la consola en 192.168.99.100:28017
+
 #### <i class="icon-pencil"></i>Ejercicio 5.Comunicando contenedores:
 https://www.docker.com/products/docker-toolbox#/tutorials
 #### <i class="icon-pencil"></i>Ejercicio 6. Docker Compose.Creando un Wordpress con MariaDb:
@@ -671,3 +689,14 @@ http://192.168.99.100:8080/wp-admin/install.php
 ```
 
 #### <i class="icon-pencil"></i>Ejercicio 7. Docker Compose. Creando múltiples multiservicios con Node y Nginx:
+
+
+
+
+
+
+
+
+
+
+
