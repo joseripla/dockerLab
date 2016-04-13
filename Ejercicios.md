@@ -55,9 +55,11 @@ docker inspect "IMAGE ID"
 
 #### <i class="icon-pencil"></i>.Ejercicio 2. Encapsulando un contenedor como servidor tomcat.
 
+#### Ejercicio 2.1. Crear el contenedor.
 ```
 docker run -it --rm -p 8888:8080 tomcat:8.0
 ```
+#### Ejercicio 2.2. Dockerizar Docker con [Graylog](https://www.ctl.io/developers/blog/post/docker-tomcat-graylog).
 
 #### <i class="icon-pencil"></i>Ejercicio 3. Creando un microservicio con Node.
 
