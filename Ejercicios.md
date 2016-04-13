@@ -61,9 +61,9 @@ docker run -it --rm -p 8888:8080 tomcat:8.0
 
 #### <i class="icon-pencil"></i>Ejercicio 3. Creando un microservicio con Node.
 
-#### Ejercicio 3.1. Node.
 
-#### Ejercicio 3.2. Usando una Api Node publicada.Modificando el contenedor creado.
+
+#### Ejercicio 3.1. Usando una Api Node publicada.Modificando el contenedor creado.
 
 ```
 $ docker pull erasmolpa/loopbackend:1.0
@@ -119,7 +119,7 @@ $ node .
  en el navegador abrir http://192.168.99.100:9000/explorer/
 ```
 
-#### Ejercicio 3.3.Usando una Api Node publicada.La Api se monta en el contenedor como volumen.
+#### Ejercicio 3.2.Usando una Api Node publicada.La Api se monta en el contenedor como volumen.
 
 ```
 $ mkdir directorio
@@ -137,6 +137,8 @@ Entramos a la carpeta host dentro del contenedor, y es ahí donde hemos dicho qu
 $ cd host/"directorioCodigo"
 $ node . Arranca la app en 192.168.99.100:9000/explorer/
 ```
+
+#### Ejercicio 3.1. Node. Ejercicio [Adicional](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/). Así es como proponen en Node montar una aplicación Dockerizada.
 
 #### <i class="icon-pencil"></i>Ejercicio 4.Creando un contenedor MongoDb.Básico.
 
