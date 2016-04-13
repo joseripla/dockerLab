@@ -37,7 +37,7 @@ $ docker run ubuntu ps ax
 
 $ docker ps -a
 ```
-También podemos buscar las imágenes en Kitematic o Docker [Hub](https://hub.docker.com) y hacer un pull and run.
+**También podemos buscar las imágenes en [Kitematic](https://kitematic.com/) o Docker [Hub](https://hub.docker.com) y hacer un pull and run.**
 
 #### <i class="icon-pencil"></i>Ejercicio 1.Creando el primer contenedor:
 
