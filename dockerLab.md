@@ -94,11 +94,17 @@ Restart policies on crashed docker instances are [covered here](http://container
 
 ### Executing Commands
 
-* [`docker exec`](https://docs.docker.com/reference/commandline/exec) to execute a command in container.
+* [`docker exec`](https://docs.docker.com/reference/commandline/exec) --> Para Ejecutar un comando en el contenedor.
 
-To enter a running container, attach a new shell process to a running container called foo, use: `docker exec -it foo /bin/bash`.
-
-
+Una de las necesidades más habituales es comunicarse con el contenedor.Esto se puede hacer con exec o attach.
+```
+$ sudo docker attach 665b4a1e17b6     #Para entrar usando el ID=665b4a1e17b6
+$ sudo docker attach mysql_container  #Para entrar usando en nombre,donde el nombre es mysql_container
+```
+```
+$ sudo docker exec -i -t 665b4a1e17b6  #Para entrar usando el ID=665b4a1e17b6  
+$ sudo docker exec -it mysql_container /bin/bash #Para entrar usando en nombre,donde el nombre es mysql_container
+```
 
 ## Layers
 
@@ -665,9 +671,3 @@ http://192.168.99.100:8080/wp-admin/install.php
 ```
 
 #### <i class="icon-pencil"></i>Ejercicio 7. Docker Compose. Creando múltiples multiservicios con Node y Nginx:
-
-
-
-
-
-
