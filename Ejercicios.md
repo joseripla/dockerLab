@@ -3,7 +3,7 @@
 
 #   Ejercicios
 
-##  Contenidos:
+##  Contenido:
 * [Ejercicios](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md)
    
     * [Ejercicio 0](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Familiarizarnos con Docker,Docker Hub y Kitematic.
