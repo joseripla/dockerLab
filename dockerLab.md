@@ -665,3 +665,9 @@ http://192.168.99.100:8080/wp-admin/install.php
 ```
 
 #### <i class="icon-pencil"></i>Ejercicio 7. Docker Compose. Creando múltiples multiservicios con Node y Nginx:
+
+
+
+
+
+
