@@ -13,7 +13,7 @@
    * [Ejercicio 4](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un contenedor MongoDb.Básico.
    * [Ejercicio 5](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando una base de datos Mysql.
    * [Ejercicio 6](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Comunicando contenedores: Links Containers.
-   * [Ejercicio 7](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose.Creando un Wordpress con MariaDb:
+   * [Ejercicio 7](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose.Creando un Wordpress con MariaDb.
    * [Ejercicio 8](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose. Creando múltiples multiservicios con Node y Nginx.
    * [Ejercicio 9](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Ejecutando un jenkins en local. La base de datos se almacena en un volumen.
                            
