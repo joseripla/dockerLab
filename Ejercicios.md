@@ -13,11 +13,11 @@
    * [Ejercicio 4](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un contenedor MongoDb. Configuación del Volume.
    * [Ejercicio 5](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando una base de datos Mysql:
    * [Ejercicio 6](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Comunicando contenedores:
-   * [Ejercicio 7](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose.Creando un Wordpress con MariaDb:
+   * [Ejercicio 7](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md#Ejercicio_7) .Docker Compose.Creando un Wordpress con MariaDb:
    * [Ejercicio 8](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose. Creando múltiples multiservicios con Node y Nginx.
    * [Ejercicio 9](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Ejecutando un jenkins en local. La base de datos se almacena en un volumen.
                            
-#### <i class="icon-pencil"></i>Ejercicio 0. Familiarizarnos con Docker,Docker Hub y Kitematic.
+#### <i class="icon-pencil"></i>##Ejercicio_0. Familiarizarnos con Docker,Docker Hub y Kitematic.
 
 Crear un primer contenedor...
 ```
@@ -208,7 +208,7 @@ http://192.168.99.100:8080/wp-admin/install.php
 
 ```
 
-#### <i class="icon-pencil"></i>Ejercicio 7. Docker Compose. Creando múltiples multiservicios con Node y Nginx:
+#### <i class="icon-pencil"></i>##Ejercicio_7. Docker Compose. Creando múltiples multiservicios con Node y Nginx:
 
 
 #### <i class="icon-pencil"></i>Ejercicio 8. Ejecutando un jenkins en local. La base de datos se almacena en un volumen .
