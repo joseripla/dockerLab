@@ -100,3 +100,7 @@ db:
   $ docker-compose up 
 ```
 En la url http://192.168.99.100:8080/wp-admin/install.php , es decir en la http://host-ip:8080.
+
+
+En la sección de [Ejercicios](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) haremos varios ejemplos de compose.
+
