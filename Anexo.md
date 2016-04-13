@@ -1,4 +1,4 @@
-<<  [volver](https://github.com/erasmolpa/dockerLab/blob/master/dockerLab.md)
+<<  [volver](https://github.com/erasmolpa/dockerLab/blob/master/Principal.md)
 ##  Contenidos:
 	* Algunos comandos útiles.
 	* Introducción del siguiente laboratorio.
