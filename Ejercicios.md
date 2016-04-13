@@ -8,13 +8,13 @@
    
    * [Ejercicio 0](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Familiarizarnos con Docker,Docker Hub y Kitematic.
    * [Ejercicio 1](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando el primer contenedor.
-   * [Ejercicio 2](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Un servidor Tomcat como contenedor como servidor.
+   * [Ejercicio 2](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Un servidor Tomcat como contenedor.
    * [Ejercicio 3](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un microservicio con Node.
    * [Ejercicio 4](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un contenedor MongoDb.Básico.
    * [Ejercicio 5](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando una base de datos Mysql.
    * [Ejercicio 6](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Comunicando contenedores: Links Containers.
    * [Ejercicio 7](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose.Creando un Wordpress con MariaDb.
-   * [Ejercicio 8](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose. Creando múltiples multiservicios con Node y Nginx.
+   * [Ejercicio 8](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) . Docker Compose. Node , Nginx y Redis. Microservicios.
    * [Ejercicio 9](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Ejecutando un jenkins en local. La base de datos se almacena en un volumen.
                            
 #### <i class="icon-pencil"></i>Ejercicio 0. Familiarizarnos con Docker,Docker Hub y Kitematic.
@@ -53,7 +53,7 @@ docker ps
 docker inspect "IMAGE ID"
 ```
 
-#### <i class="icon-pencil"></i>Ejercicio 2. Un servidor [Tomcat](https://hub.docker.com/_/tomcat/) como contenedor como servidor.
+#### <i class="icon-pencil"></i>Ejercicio 2. Un servidor [Tomcat](https://hub.docker.com/_/tomcat/) como contenedor.
 
 ###### Ejercicio 2.1. Crear el contenedor.
 ```
@@ -62,8 +62,6 @@ docker run -it --rm -p 8888:8080 tomcat:8.0
 ###### Ejercicio 2.2. Dockerizar Tomcat con [Graylog](https://www.ctl.io/developers/blog/post/docker-tomcat-graylog).
 
 #### <i class="icon-pencil"></i>Ejercicio 3. Creando un microservicio con Node.
-
-
 
 ###### Ejercicio 3.1. Usando una Api Node publicada.Modificando el contenedor creado.
 
@@ -178,7 +176,7 @@ Esto monta el mongobd en 192.168.99.100:27017 y la consola en 192.168.99.100:280
 ###### Ejercicio 5.1. Node. Ejercicio [Adicional]() Sin compose.
 ###### Ejercicio 5.2. Node. Ejercicio [Adicional](https://github.com/tutumcloud/mysql) usando la imagen de tutum y compose.
 
-#### <i class="icon-pencil"></i>Ejercicio 5.Comunicando contenedores:
+#### <i class="icon-pencil"></i>Ejercicio 6. Comunicando contenedores.Links Containers.
 ####### Recipient container es el que tiene acceso a los datos de Source Container.
 ```
 $ docker run -d --name databasePost postgres
@@ -187,7 +185,7 @@ $ cat /etc/hosts
 $ exit
 $ docker inspect databasePost | grep IPAddress
 ```     
-#### <i class="icon-pencil"></i>Ejercicio 6. Docker Compose.Creando un Wordpress con MariaDb:
+#### <i class="icon-pencil"></i>Ejercicio 7. Docker Compose.Creando un Wordpress con MariaDb:
 
  Accediendo al [hub oficial de wordpress](https://hub.docker.com/r/library/wordpress/) vemos que proponen dos caminos para crear una web wordpress:
 
@@ -225,11 +223,11 @@ http://192.168.99.100:8080/wp-admin/install.php
 
 ```
 
-#### <i class="icon-pencil"></i>Ejercicio 7. Docker Compose. Creando múltiples multiservicios con Node y Nginx:
+#### <i class="icon-pencil"></i>Ejercicio 8. Docker Compose. Node , Nginx y Redis. Microservicios:
 
 Con el siguiente ejemplo [Adicinal](http://anandmanisankar.com/posts/docker-container-nginx-node-redis-example/) se monta un servidor Nginx en un contenedor docker , y a su vez, se crean varios contenedores con instancias a node que son gestionadas por Nginx. Todas estas instancias o "microservicios" Node apuntan a una mismas base de datos Redis. El código está en [github](https://github.com/msanand/docker-workflow)
 
-#### <i class="icon-pencil"></i>Ejercicio 8. Ejecutando un jenkins en local. La base de datos se almacena en un volumen .
+#### <i class="icon-pencil"></i>Ejercicio 9. Ejecutando un jenkins en local. La base de datos se almacena en un volumen .
 
 ```
 # Sustituir /Users/erasmodominguezjimenez/Public/Dockers/dockerVolume/ por la ruta de carpeta donde queremos almacenar los datos.
