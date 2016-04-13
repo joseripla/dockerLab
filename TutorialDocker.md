@@ -5,12 +5,14 @@
 ##  Contenidos:
 
  * [Images](#imagenes)
+ 
  * [Containers](#Contenedores)
-        * [Layers](#layers)
-        * [Links](#links)
-        * [Volumes](#volumes)
-        * [Exposing Ports](#exposing-ports)
-        * [Red](#red)
+ 
+       * [Layers](#layers)
+       * [Links](#links)
+       * [Volumes](#volumes)
+       * [Exposing Ports](#exposing-ports)
+       * [Red](#red)
  * [Dockerfile](#dockerfile)
         * [Best Practices](#best-practices)
  * [Registry](#registro)
