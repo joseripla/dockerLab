@@ -1,5 +1,5 @@
 <<  [Principal](https://github.com/erasmolpa/dockerLab/blob/master/Principal.md)
-<<  [Ejercicios](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md)
+| [Ejercicios](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) >>
 # Tutorial de Docker
 
 ##  Contenidos:
