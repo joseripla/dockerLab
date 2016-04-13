@@ -1,6 +1,6 @@
 <  [Principal](https://github.com/erasmolpa/dockerLab/blob/master/Principal.md)
 
-## Opción 1. Instalar directamente. Dependerá del SO.
+## Opción 1. Instalación Host. Dependerá del SO.
 
 ### Linux
 
