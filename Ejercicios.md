@@ -53,7 +53,7 @@ docker ps
 docker inspect "IMAGE ID"
 ```
 
-#### <i class="icon-pencil"></i>.Encapsulando un contenedor como servidor tomcat.
+#### <i class="icon-pencil"></i>.Ejercicio 2. Encapsulando un contenedor como servidor tomcat.
 
 ```
 docker run -it --rm -p 8888:8080 tomcat:8.0
@@ -62,7 +62,7 @@ docker run -it --rm -p 8888:8080 tomcat:8.0
 #### <i class="icon-pencil"></i>Ejercicio 3. Creando un microservicio con Node.
 https://www.youtube.com/watch?v=PJ95WY2DqXo
 
-#### Opcion 1. Modificando el contenedor creado.
+#### Ejercicio 3.1. Modificando el contenedor creado.
 
 ```
 $ docker pull erasmolpa/loopbackend:1.0
@@ -118,7 +118,7 @@ $ node .
  en el navegador abrir http://192.168.99.100:9000/explorer/
 ```
 
-#### Opcion 2. Montando el contenedor con un volumen.
+#### Ejercicio 3.2. Montando el contenedor con un volumen.
 
 ```
 $ mkdir directorio
