@@ -12,8 +12,8 @@
    * [Ejercicio 3](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un microservicio con Node.
    * [Ejercicio 4](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un contenedor MongoDb.Básico.
    * [Ejercicio 5](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando una base de datos Mysql:
-   * [Ejercicio 6](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Comunicando contenedores:
-   * [Ejercicio 7](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md#Ejercicio_7) .Docker Compose.Creando un Wordpress con MariaDb:
+   * [Ejercicio 6](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Comunicando contenedores: Links Containers.
+   * [Ejercicio 7](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose.Creando un Wordpress con MariaDb:
    * [Ejercicio 8](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose. Creando múltiples multiservicios con Node y Nginx.
    * [Ejercicio 9](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Ejecutando un jenkins en local. La base de datos se almacena en un volumen.
                            
@@ -179,7 +179,14 @@ Esto monta el mongobd en 192.168.99.100:27017 y la consola en 192.168.99.100:280
 ###### Ejercicio 5.2. Node. Ejercicio [Adicional](https://github.com/tutumcloud/mysql) usando la imagen de tutum y compose.
 
 #### <i class="icon-pencil"></i>Ejercicio 5.Comunicando contenedores:
-https://www.docker.com/products/docker-toolbox#/tutorials
+####### Recipient container es el que tiene acceso a los datos de Source Container.
+```
+$ docker run -d --name databasePost postgres
+$ docker docker run -it --name website --link databasePost:db nginx ./bin/bash
+$ cat /etc/hosts 
+$ exit
+$ docker inspect databasePost | grep IPAddress
+```     
 #### <i class="icon-pencil"></i>Ejercicio 6. Docker Compose.Creando un Wordpress con MariaDb:
 
  Accediendo al [hub oficial de wordpress](https://hub.docker.com/r/library/wordpress/) vemos que proponen dos caminos para crear una web wordpress:
