@@ -173,9 +173,10 @@ $ docker run -d --name mongoDB -p 27017:27017 -p 28017:28017 erasmolpa/mongo --h
 
 Esto monta el mongobd en 192.168.99.100:27017 y la consola en 192.168.99.100:28017
 
-#### <i class="icon-pencil"></i>Ejercicio 5.Creando una base de datos Mysql:
+#### <i class="icon-pencil"></i>Ejercicio 5.Creando una base de datos Mysql.
 
-https://hub.docker.com/_/postgres/
+###### Ejercicio 5.1. Node. Ejercicio [Adicional]() Sin compose.
+###### Ejercicio 5.2. Node. Ejercicio [Adicional](https://github.com/tutumcloud/mysql) usando la imagen de tutum y compose.
 
 #### <i class="icon-pencil"></i>Ejercicio 5.Comunicando contenedores:
 https://www.docker.com/products/docker-toolbox#/tutorials
