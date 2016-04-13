@@ -79,7 +79,7 @@ Creando un contenedor wordpress y mariaDb
 
 Si accedemos al hub de  oficial de [wordpress](https://hub.docker.com/_/wordpress/) vemos que proponen dos medios de crear una web.Tanto utilizando links containers como usando compose. El fichero compose es el siguiente :
 
-Example **docker-compose.yml** for wordpress:
+Ejemplo **docker-compose.yml** para wordpress:
  `
  <pre>
  wordpress:
