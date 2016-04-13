@@ -17,8 +17,8 @@
         * [Best Practices](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#best-practices)
     * [Registro](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#registro)
 * [Ejercicios](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md)
-   * Ejercicio 0. Familiarizarnos con Docker,Docker Hub y Kitematic.
-   * Ejercicio 1. Creando el primer contenedor.
+   * [Ejercicio 0]((https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md)). Familiarizarnos con Docker,Docker Hub y Kitematic.
+   * [Ejercicio 1]((https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md)). Creando el primer contenedor.
    * Ejercicio 2. Encapsulando un contenedor como servicio (Contenedor con apache2).
    * Ejercicio 3. Creando un microservicio con Node.
    * Ejercicio 4. Creando un contenedor MongoDb. Configuación del Volume.
