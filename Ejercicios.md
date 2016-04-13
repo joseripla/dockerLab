@@ -55,17 +55,17 @@ docker inspect "IMAGE ID"
 
 #### <i class="icon-pencil"></i>.Ejercicio 2. Encapsulando un contenedor como servidor tomcat.
 
-#### Ejercicio 2.1. Crear el contenedor.
+###### Ejercicio 2.1. Crear el contenedor.
 ```
 docker run -it --rm -p 8888:8080 tomcat:8.0
 ```
-#### Ejercicio 2.2. Dockerizar Docker con [Graylog](https://www.ctl.io/developers/blog/post/docker-tomcat-graylog).
+###### Ejercicio 2.2. Dockerizar Docker con [Graylog](https://www.ctl.io/developers/blog/post/docker-tomcat-graylog).
 
 #### <i class="icon-pencil"></i>Ejercicio 3. Creando un microservicio con Node.
 
 
 
-#### Ejercicio 3.1. Usando una Api Node publicada.Modificando el contenedor creado.
+###### Ejercicio 3.1. Usando una Api Node publicada.Modificando el contenedor creado.
 
 ```
 $ docker pull erasmolpa/loopbackend:1.0
@@ -84,33 +84,33 @@ $ npm install
 
 $ node .
 ```
-##### para ver que la hay un contenedor running de la imagen
+###### para ver que la hay un contenedor running de la imagen
 ```
 $ docker ps -a
 
 $ docker images 
 ```
-##### Paso opcional si queremos crear una imagen nueva
+###### Paso opcional si queremos crear una imagen nueva
 ```
 $ docker commit b26d92b24e72 erasmolpa/loopbackend:microservice
 
 $ docker images
 ```
-#### Sobre la misma imagen sería:
+###### Sobre la misma imagen sería:
 ```
 $ docker tag sha256:b3bdb  erasmolpa/loopbackend:microservice
 ```
-#### Para publicar la imagen, sino nos hemos logeado aun 
+###### Para publicar la imagen, sino nos hemos logeado aun 
 ```
 $ docker login --username=username --email=user@gmail.com
 ```
-##### Publicamos la imagen 
+###### Publicamos la imagen 
 ```
 $ docker push erasmolpa/loopbackend:microservice
 
 $ docker stop b26d92b24e72 Paramos el contenedor de microservice para arrancarlo otra vez
 ```
-##### Mapeamos el puerto interno 3000 al externo 9000
+###### Mapeamos el puerto interno 3000 al externo 9000
 ```
 $ docker run -it -p 9000:3000 erasmolpa/loopbackend:microservice ./bin/bash
 
@@ -121,7 +121,7 @@ $ node .
  en el navegador abrir http://192.168.99.100:9000/explorer/
 ```
 
-#### Ejercicio 3.2.Usando una Api Node publicada.La Api se monta en el contenedor como volumen.
+###### Ejercicio 3.2.Usando una Api Node publicada.La Api se monta en el contenedor como volumen.
 
 ```
 $ mkdir directorio
@@ -134,13 +134,13 @@ $ cd /loopCar/loopCar
   
 $ docker run -it -v /directorio/loopCar:/host -p 9000:3000 erasmolpa/loopbackend:latest ./bin/bash
 ```
-Entramos a la carpeta host dentro del contenedor, y es ahí donde hemos dicho que monte el código.
+###### Entramos a la carpeta host dentro del contenedor, y es ahí donde hemos dicho que monte el código.
 ```
 $ cd host/"directorioCodigo"
 $ node . Arranca la app en 192.168.99.100:9000/explorer/
 ```
 
-#### Ejercicio 3.1. Node. Ejercicio [Adicional](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/). Así es como proponen en Node montar una aplicación Dockerizada.
+###### Ejercicio 3.1. Node. Ejercicio [Adicional](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/). Así es como proponen en Node montar una aplicación Dockerizada.
 
 #### <i class="icon-pencil"></i>Ejercicio 4.Creando un contenedor MongoDb.Básico.
 
