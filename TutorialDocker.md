@@ -1,19 +1,19 @@
 <<  [Principal](https://github.com/erasmolpa/dockerLab/blob/master/Principal.md)
-| [Ejercicios](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) >>
+
 # Tutorial de Docker
 
 ##  Contenidos:
 
  * [Images](#imagenes)
-   * [Containers](#Contenedores)
+ * [Containers](#Contenedores)
         * [Layers](#layers)
         * [Links](#links)
         * [Volumes](#volumes)
         * [Exposing Ports](#exposing-ports)
         * [Red](#red)
-    * [Dockerfile](#dockerfile)
+ * [Dockerfile](#dockerfile)
         * [Best Practices](#best-practices)
-    * [Registry](#registro)
+ * [Registry](#registro)
     
 ## Contenedores
 
@@ -432,3 +432,4 @@ USER user
 There's also work on [user namespaces](https://s3hh.wordpress.com/2013/07/19/creating-and-using-containers-without-privilege/) -- it is in 1.10 but is not enabled by default.
 
 To enable user namespaces ("remap the userns") in Ubuntu 15.10, [follow the blog example](https://raesene.github.io/blog/2016/02/04/Docker-User-Namespaces/).
+(https://raesene.github.io/blog/2016/02/04/Docker-User-Namespaces/).
