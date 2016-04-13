@@ -27,9 +27,9 @@ Docker Toolbox es una herramienta que nos instalará :
 
 Si tienes dudas sobre la instalacion.... [installation](https://docs.docker.com/installation/)
 
-### Instalación con Máquina virtual Ubuntu...Y VAGRANT!
+### VAGRANT Y VIRTUAL BOX
 
-   Sólo hay que instalar virtualBox y Vagrant.
+   Instalación de máquina virtual Ubuntu con Vagrant.Sólo hay que instalar virtualBox y Vagrant.
    
    El box está en la siguiente [enlace](https://atlas.hashicorp.com/erasmolpa/boxes/UbuntuDocker15GB)
    
