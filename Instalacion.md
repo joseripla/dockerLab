@@ -1,4 +1,4 @@
-<  [Principal](https://github.com/erasmolpa/dockerLab/blob/master/Principal.md)
+<  [Principal](http://erasmolpa.github.io/dockerLab)
 
 ## Opción 1. Instalación Host. Dependerá del SO.
 
