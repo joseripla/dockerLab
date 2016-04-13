@@ -1,4 +1,6 @@
- [Anexo](https://github.com/erasmolpa/dockerLab/blob/master/Anexo.md)
+##  Contenidos:
+
+* [Anexo](https://github.com/erasmolpa/dockerLab/blob/master/Anexo.md)
 	* Algunos comandos útiles.
 	* Introducción del siguiente laboratorio.
       * Docker Compose. Orquestando Servicios.
@@ -7,8 +9,6 @@
 		      *  https://circleci.com/docs/docker/
 		      *  https://www.docker.com/sites/default/files/RA_CI%20with%20Docker_08.25.2015.pdf
 		      *  Ejemplo http://jenkins-58674a6f-1.225b690b.cont.dockerapp.io:32769/
-                               
-
 
 ## Anexo
 
