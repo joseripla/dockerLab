@@ -20,25 +20,27 @@ https://jsitech1.gitbooks.io/meet-docker/content/mejores_practicas_dockerfiles.h
 * [Dockerfile](#dockerfile)
       * [Best Practices](#best-practices)
 * [Registro](#registro)
-
 * [Ejercicios](#ejercicios)
-* [AnexoA](#anexoA)
-* [Anexo.Introducción del siguiente laboratorio ](#anexoB) 
+* [Anexo](#anexo)
+	* Algunos comandos útiles.
+	* Introducción del siguiente laboratorio.
       * Docker Compose. Orquestando Servicios.
-      * Docker Cloud. Plataforma para desplegar contenedores.
-      * Docker y la IC. https://circleci.com/docs/docker/
-                               https://www.docker.com/sites/default/files/RA_CI%20with%20Docker_08.25.2015.pdf
-                               ejemplo http://jenkins-58674a6f-1.225b690b.cont.dockerapp.io:32769/
+      * [Docker Cloud](https://cloud.docker.com/). Plataforma para desplegar contenedores.
+      * Docker y la IC. 
+		      *  https://circleci.com/docs/docker/
+		      *  https://www.docker.com/sites/default/files/RA_CI%20with%20Docker_08.25.2015.pdf
+		      *  Ejemplo http://jenkins-58674a6f-1.225b690b.cont.dockerapp.io:32769/
                                
 ## Arquitectura
 [Repasar las diapositivas del primer Meetup](http://es.slideshare.net/ErasmoDominguezJimen/devops-episodio-1-devopstnf?qid=a3de014b-9e2f-41fb-8d52-cb05aef9f9ac&v=&b=&from_search=1).
 
-## Novedades
+## Eclipse se suma a la fiesta.
 
-Eclipse se suma a la fiesta 
-                                            http://www.eclipse.org/che/
-                                            https://eclipse-che.readme.io/docs/usage
-                                            https://github.com/domeide/doclipser
+ -  http://www.eclipse.org/che/
+ -  https://eclipse-che.readme.io/docs/usage
+ -  https://github.com/domeide/doclipser
+                            
+                                            
 ## Contenedores
 
 ### Ciclo de vida 
@@ -495,6 +497,8 @@ https://www.youtube.com/watch?v=PJ95WY2DqXo
 
 #### <i class="icon-pencil"></i>Ejercicio 4.Creando un contenedor MongoDb. Configuación del Volume.
 
+En la documentación oficial de Docker , explican como [Dockerizar](https://docs.docker.com/engine/examples/mongodb/) un mongodb.
+
 Existen varias alternativas:
 
 Crear nuestro propio DockerFile:
@@ -502,7 +506,7 @@ Crear nuestro propio DockerFile:
 # Crear el directorio de trabajo
 $ mkdir mongodb
 $ cd mongodb
-$ vim Dockerfile y copiar el contenido del [Dockerfile](https://github.com/erasmolpa/mongoDocker.git)
+$ vim Dockerfile # y copiar el contenido de :(https://github.com/erasmolpa/mongoDocker.git)
 $ docker build -t mongodb . #donde mongodb en este caso es el nombre de la imagen
 $ docker run -d --name mongodb -p 27017:27017 -p 28017:28017 mongodb  --httpinterface 
 ```
@@ -521,6 +525,10 @@ $ docker run -d --name mongoDB -p 27017:27017 -p 28017:28017 erasmolpa/mongo --h
 ```
 
 Esto monta el mongobd en 192.168.99.100:27017 y la consola en 192.168.99.100:28017
+
+#### <i class="icon-pencil"></i>Ejercicio 5.Creando una base de datos Mysql:
+
+https://hub.docker.com/_/postgres/
 
 #### <i class="icon-pencil"></i>Ejercicio 5.Comunicando contenedores:
 https://www.docker.com/products/docker-toolbox#/tutorials
@@ -565,6 +573,14 @@ http://192.168.99.100:8080/wp-admin/install.php
 #### <i class="icon-pencil"></i>Ejercicio 7. Docker Compose. Creando múltiples multiservicios con Node y Nginx:
 
 
+#### <i class="icon-pencil"></i>Ejercicio 8. Ejecutando un jenkins en local. La base de datos se almacena en un volumen .
+
+```
+# Sustituir /Users/erasmodominguezjimenez/Public/Dockers/dockerVolume/ por la ruta de carpeta donde queremos almacenar los datos.
+$ docker run --name jenkins -p 8080:8080 -p 50000:50000 -v /Users/erasmodominguezjimenez/Public/Dockers/dockerVolume/:/var/jenkins_home erasmolpa/jenkins:latest
+
+Esto monta jenkins en http://192.168.99.100:8080/
+```
 
 ## Anexo
 
