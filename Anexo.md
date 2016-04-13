@@ -159,102 +159,83 @@ docker stats $(docker ps --format '{{.Names}}')
 
 ### Compose. Primeros pasos:
 
-Docker Compose es una herramienta para definir y correr aplicaciones multicontenedores. Hacemos uso de un archivo docker-compose para configurar los servicios que necesita la aplicación. Luego haciendo uso de un simple comando, creamos los contenedores necesarios e iniciamos todos los servicios especificados en la configuración.
-Compose es bueno para desarrollo, pruebas y flujos de trabajo de integración continua.
-En el caso de los desarrolladores, tienen la habilidad de correr las aplicaciones en un ambiente aislado e interactuar con la aplicación. El archivo de compose provee una forma de documentar y configurar todas las dependencias de la aplicación y al final solo tiene que hacer uso de un comando para subir todo el ambiente.
-Otro punto importante en los procesos de Despliegue e integración continua es el banco de pruebas. Este banco de pruebas requiere de un ambiente donde realizar las pruebas. Compose provee una manera de crear y destruir los ambientes de prueba aislados para ese banco de pruebas. Definiendo todo el ambiente en un archivo compose se puede crear y destruir los ambientes con pocos comandos.
-Instalando Docker Compose
+Docker [Compose](https://docs.docker.com/compose/) es una herramienta para definir y correr aplicaciones multicontenedores. Mediante un fichero de configuración, docker-compose.yml, orquestamos y "linkamos" nuestros contenedores.
+Es una muy buena opción para proyectos con arquitecturas mutliservicios, aplicaciones monolíticas (Servidor aplicacion + servidor web + base de datos) y muy útil para definir ciclos de integración contínua.
 
-Antes de proceder con la instalación de compose es bueno consultar la página de lanzamiento https://github.com/docker/compose/releases y ajustar el comando de instalación acorde con la última versión estable.
+#### Instalación. Sólo Para Linux.
+```
 $ curl -L https://github.com/docker/compose/releases/download/1.6.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-
+```
+```
 $ chmod +x /usr/local/bin/docker-compose
 
-
-
+```
 Comprobamos la instalación
+```
 $ docker-compose --version
+```
+**En máquinas Mac y Windows ya viene instalado como parte de Docker Toolbox.**
 
-
-Arrancar un entorno en primer plano, es decir, la ejecución del contenedor es un proceso que hereda de la consola. La salida estándar y de error del contenedor se mostrará por pantalla. Como no se le ha pasado ningún argumento más, Docker Compose tomará el fichero con nombre exacto docker-compose.yml en la ruta en la que se está posicionado en ese momento.
-
-<code>
+#### Comandos.
+```
 $ docker-compose up
+```
+##### Si se quiere pasar como argumento el fichero de especificación:
 
-###### Si se quiere pasar como argumento el fichero de especificación:
-
-$ docker-compose -f <fichero> up
-
-###### Ejecutar en segundo plano:
-
+```
+$ docker-compose -f  fichero.yml up
+```
+##### Ejecutar en segundo plano:
+```
 $ docker-compose -f <fichero> up -d
-
-###### Parar un entorno:
+```
+#####Parar un entorno:
+```
 $ docker-compose -f <fichero> kill
-
-###### Para ver los contenedores parados se haría
-
+```
+#####Para ver los contenedores parados se haría
+```
 $ docker ps -a
-Eliminar por completo un entorno:
+```
+#####Eliminar por completo un entorno:
+```
 $ docker-compose -f <fichero.yml> rm
-Comprobar los logs de los contenedores (lo explicado en el primer punto):
+```
+#####Comprobar los logs de los contenedores (lo explicado en el primer punto):
+```
 $ docker-compose logs
-Comprobar un fichero con la especificación yml del entorno
+```
+#####Comprobar un fichero con la especificación yml del entorno
+```
 $ docker-compose -f <fichero.yml> config
-</code>
-https://stackfiles.io/
+```
 
-Usando Compose:
+Existe un [repositorio](https://stackfiles.io/) de Stacks files que se pueden reutilizar. Además en Dicker Hub tienes múltiples de instalaciones compose que pueden servir de guía como la que veremos a continuación
+
+
+#### Usando Compose:
 
 Creando un contenedor wordpress y mariaDb
 
 Si accedemos al hub de  oficial de [wordpress](https://hub.docker.com/_/wordpress/) vemos que proponen dos medios de crear una web.Tanto utilizando links containers como usando compose. El fichero compose es el siguiente :
 
-Example docker-compose.yml for wordpress:
-<code>
-wordpress:
+Example **docker-compose.yml** for wordpress:
+ `
+ <pre>
+ wordpress:
   image: wordpress
   links:
     - db:mysql
   ports:
     - 8080:80
-
 db:
   image: mariadb
   environment:
     MYSQL_ROOT_PASSWORD: example
-Run docker-compose up, wait for it to initialize completely, and visit http://localhost:8080 or http://host-ip:8080.
-
-
-Vamos a explica brevemente los argumentos
-web : Nombre que define el servicio
-build : crea el contenedor, en este caso pasamos . , para que haga uso del Dockerfile que creamos recientemente.
-command : El comando que le pasamos al contenedor al momento de su ejecución.
-ports: Mapeo de Puertos
-links : Definimos el enlace de los contenedores
-volumes : Creamos el volumen que contiene nuestro código
-db: Nombre que define nuestro contenedor con la base de datos
-image: la imagen donde basará su contenedor
-environment: aquí pasamos las variables, en este caso es un contenedor con MySQL y le pasamos la base de datos a crear y las credenciales.
-Ya aquí tenemos el ambiente multi-contenedor listo, pero antes de lanzar nuestro proyecto de wordpress debemos configurar wp-config.php con las credenciales que le pasos en las variables
-
-  // ** MySQL settings - You can get this info from your web host ** //
-
-    /** The name of the database for WordPress */
-    define('DB_NAME', 'jsitech');
-
-    /** MySQL database username */
-    define('DB_USER', 'jsitech');
-
-    /** MySQL database password */
-    define('DB_PASSWORD', 'jsitech');
-
-    /** MySQL hostname */
-    define('DB_HOST', 'db:3306');
-    
-    Ya con todo definido en los archivos correspondiente, solo es lanzar el proyecto multi-contenedor. Ejecutamos el comando
-# docker-compose up
-Esto se encargará de crear las imágenes necesarias y lanzar los contenedores correspondientes a la web y la base de datos.
-    
-Vamos a ver si todo funciona bien, si recuerdan creamos un mapeo de puertos 8080:8080, lo que quiere decir que debemos poder acceder al contenedor con la IP del host de docker mediante ese puerto.
-http://192.168.1.9:8080
+ <code>
+ 
+ Finalmente lanzamos compose donde tengamos el fichero docker-compose.yml
+ ```
+  $ docker-compose up 
+```
+En la url http://192.168.99.100:8080/wp-admin/install.php , es decir en la http://host-ip:8080.
