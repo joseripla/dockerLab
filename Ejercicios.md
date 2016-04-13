@@ -225,7 +225,7 @@ http://192.168.99.100:8080/wp-admin/install.php
 
 #### <i class="icon-pencil"></i>Ejercicio 8. Docker Compose. Node , Nginx y Redis. Microservicios:
 
-Con el siguiente ejemplo [Adicinal](http://anandmanisankar.com/posts/docker-container-nginx-node-redis-example/) se monta un servidor Nginx en un contenedor docker , y a su vez, se crean varios contenedores con instancias a node que son gestionadas por Nginx. Todas estas instancias o "microservicios" Node apuntan a una mismas base de datos Redis. El código está en [github](https://github.com/msanand/docker-workflow)
+Con el siguiente [ejemplo](http://anandmanisankar.com/posts/docker-container-nginx-node-redis-example/) se monta un servidor Nginx en un contenedor docker , y a su vez, se crean varios contenedores con instancias a node que son gestionadas por Nginx. Todas estas instancias o "microservicios" Node apuntan a una mismas base de datos Redis. El código está en [github](https://github.com/msanand/docker-workflow)
 
 #### <i class="icon-pencil"></i>Ejercicio 9. Ejecutando un jenkins en local. La base de datos se almacena en un volumen .
 
