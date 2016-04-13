@@ -1,7 +1,28 @@
 <<  [Principal](https://github.com/erasmolpa/dockerLab/blob/master/Principal.md)
 |   [Tutorial](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md) >>
 
-## Ejercicios
+#   Ejercicios
+
+##  Contenidos:
+
+* [Ejercicios](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md)
+   * Ejercicio 0. Familiarizarnos con Docker,Docker Hub y Kitematic.
+   * Ejercicio 1. Creando el primer contenedor.
+   * Ejercicio 2. Encapsulando un contenedor como servicio (Contenedor con apache2).
+   * Ejercicio 3. Creando un microservicio con Node.
+   * Ejercicio 4. Creando un contenedor MongoDb. Configuación del Volume.
+   * Ejercicio 5. Creando una base de datos Mysql:
+   * Ejercicio 5. Comunicando contenedores:
+   * Ejercicio 6. Docker Compose.Creando un Wordpress con MariaDb:
+   * Ejercicio 7. Docker Compose. Creando múltiples multiservicios con Node y Nginx:
+   * Ejercicio 8. Ejecutando un jenkins en local. La base de datos se almacena en un volumen 
+* [Anexo](https://github.com/erasmolpa/dockerLab/blob/master/Anexo.md)
+   * Algunos comandos útiles.
+   * Introducción del siguiente laboratorio.
+      * Docker Compose. Orquestando Servicios.
+      * [Docker Cloud](https://cloud.docker.com/). Plataforma para desplegar contenedores.
+      * Docker y la IC. 
+                           
 
 #### <i class="icon-pencil"></i>Ejercicio 0. Familiarizarnos con Docker,Docker Hub y Kitematic.
 
