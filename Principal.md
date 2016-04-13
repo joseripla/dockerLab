@@ -6,7 +6,7 @@
 * [Instalación](https://github.com/erasmolpa/dockerLab/blob/master/Instalacion.md)
 * [Arquitectura](#arquitectura)
 * [Tutorial](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md)
-   c
+   
     * [Contenedores](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#Contenedores)
         * [Layers](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#layers)
         *  [Links](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#links)
