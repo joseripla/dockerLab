@@ -25,3 +25,16 @@ Docker Toolbox es una herramienta que nos instalará :
 
 Si tienes dudas sobre la instalacion.... [installation](https://docs.docker.com/installation/)
 
+### Instalación con Máquina virtual Ubuntu...Y VAGRANT!
+
+   Sólo hay que instalar virtualBox y Vagrant.
+   
+   El box está en la siguiente [enlace](https://atlas.hashicorp.com/erasmolpa/boxes/UbuntuDocker15GB)
+   
+   Una vez instalada la máquina virtual se puede ajustar la RAM etc..
+   
+   Los comandos a ejecutar para instlar son:
+    * vagrant init erasmolpa/UbuntuDocker15GB;
+    * vagrant up --provider virtualbox;
+   Esto inicia la máquina virtual en virtual Box.
+     * IMPORTANTE el usuario y password son IGUALES :) 
