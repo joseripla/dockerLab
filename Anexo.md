@@ -157,9 +157,24 @@ docker stats $(docker ps --format '{{.Names}}')
 
 
 
-### Compose:
+### Compose. Primeros pasos:
 
-Aquí los comandos más usados de docker-compose, asumiendo que el usuario ha llevado a cabo el ciclo de creación y mantenimiento de contenedores mediante el manager oficial de docker, y que mantiene un determinado repositorio de imágenes (en local o remoto).
+Docker Compose es una herramienta para definir y correr aplicaciones multicontenedores. Hacemos uso de un archivo docker-compose para configurar los servicios que necesita la aplicación. Luego haciendo uso de un simple comando, creamos los contenedores necesarios e iniciamos todos los servicios especificados en la configuración.
+Compose es bueno para desarrollo, pruebas y flujos de trabajo de integración continua.
+En el caso de los desarrolladores, tienen la habilidad de correr las aplicaciones en un ambiente aislado e interactuar con la aplicación. El archivo de compose provee una forma de documentar y configurar todas las dependencias de la aplicación y al final solo tiene que hacer uso de un comando para subir todo el ambiente.
+Otro punto importante en los procesos de Despliegue e integración continua es el banco de pruebas. Este banco de pruebas requiere de un ambiente donde realizar las pruebas. Compose provee una manera de crear y destruir los ambientes de prueba aislados para ese banco de pruebas. Definiendo todo el ambiente en un archivo compose se puede crear y destruir los ambientes con pocos comandos.
+Instalando Docker Compose
+
+Antes de proceder con la instalación de compose es bueno consultar la página de lanzamiento https://github.com/docker/compose/releases y ajustar el comando de instalación acorde con la última versión estable.
+$ curl -L https://github.com/docker/compose/releases/download/1.6.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+
+$ chmod +x /usr/local/bin/docker-compose
+
+
+
+Comprobamos la instalación
+$ docker-compose --version
+
 
 Arrancar un entorno en primer plano, es decir, la ejecución del contenedor es un proceso que hereda de la consola. La salida estándar y de error del contenedor se mostrará por pantalla. Como no se le ha pasado ningún argumento más, Docker Compose tomará el fichero con nombre exacto docker-compose.yml en la ruta en la que se está posicionado en ese momento.
 
@@ -189,64 +204,28 @@ $ docker-compose -f <fichero.yml> config
 </code>
 https://stackfiles.io/
 
-Docker Compose
+Usando Compose:
 
-Docker Compose es una herramienta para definir y correr aplicaciones multicontenedores. Hacemos uso de un archivo docker-compose para configurar los servicios que necesita la aplicación. Luego haciendo uso de un simple comando, creamos los contenedores necesarios e iniciamos todos los servicios especificados en la configuración.
-Compose es bueno para desarrollo, pruebas y flujos de trabajo de integración continua.
-En el caso de los desarrolladores, tienen la habilidad de correr las aplicaciones en un ambiente aislado e interactuar con la aplicación. El archivo de compose provee una forma de documentar y configurar todas las dependencias de la aplicación y al final solo tiene que hacer uso de un comando para subir todo el ambiente.
-Otro punto importante en los procesos de Despliegue e integración continua es el banco de pruebas. Este banco de pruebas requiere de un ambiente donde realizar las pruebas. Compose provee una manera de crear y destruir los ambientes de prueba aislados para ese banco de pruebas. Definiendo todo el ambiente en un archivo compose se puede crear y destruir los ambientes con pocos comandos.
-Instalando Docker Compose
+Creando un contenedor wordpress y mariaDb
 
-Antes de proceder con la instalación de compose es bueno consultar la página de lanzamiento https://github.com/docker/compose/releases y ajustar el comando de instalación acorde con la última versión estable.
-$ curl -L https://github.com/docker/compose/releases/download/1.6.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+Si accedemos al hub de  oficial de [wordpress](https://hub.docker.com/_/wordpress/) vemos que proponen dos medios de crear una web.Tanto utilizando links containers como usando compose. El fichero compose es el siguiente :
 
-$ chmod +x /usr/local/bin/docker-compose
+Example docker-compose.yml for wordpress:
+<code>
+wordpress:
+  image: wordpress
+  links:
+    - db:mysql
+  ports:
+    - 8080:80
+
+db:
+  image: mariadb
+  environment:
+    MYSQL_ROOT_PASSWORD: example
+Run docker-compose up, wait for it to initialize completely, and visit http://localhost:8080 or http://host-ip:8080.
 
 
-
-Comprobamos la instalación
-$ docker-compose --version
-Usando Compose
-
-Vamos a ver el uso de Compose en un caso simple, definiendo un ambiente para Wordpress.
-Descargamos el CMS de WordPress y lo descomprimimos.
-$ curl https://wordpress.org/latest.tar.gz | tar -xvzf –
-El directorio resultante es wordpress/, esto lo podemos cambiar a nuestro gusto
-$ mv wordpress/ jsitech/
-Accedemos al directorio
-$ cd jsitech/
-El Próximo paso es crear un Dockerfile dentro del directorio, que definirá el contenedor que estará ejecutando la aplicación.
-   $ vi Dockerfile
-    FROM ubuntu:14.04
-
-    RUN apt-get update && apt-get install php5 php5-mysql -y
-
-    ADD . /codigo
-    
-    
-    Este Dockerfile crea el Contenedor base con los requisitos para ejecutar el cms de WordPress y agrega los archivos correspondiente
-El próximo paso es crear un archivo docker-compose.yml que iniciará los servicios y una instancia separada de MySQL.
-$ nano docker-compose.yml
-
- web:
-     build: .
-     command: php -S 0.0.0.0:8080 -t /jsitech
-     ports:
-     - "8080:8080"
-
-     links:
-     - db
-
-     volumes:
-     - .:/jsitech
-
-    db:
-     image: mysql
-     environment:
-     MYSQL_ROOT_PASSWORD: jsitech
-     MYSQL_DATABASE: jsitech
-     MYSQL_USER: jsitech
-     MYSQL_PASSWORD: jsitech
 Vamos a explica brevemente los argumentos
 web : Nombre que define el servicio
 build : crea el contenedor, en este caso pasamos . , para que haga uso del Dockerfile que creamos recientemente.
