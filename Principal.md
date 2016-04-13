@@ -3,7 +3,7 @@
 
 ##  Contenidos:
 
-* [Instalación](https://github.com/erasmolpa/dockerLab/blob/master/instalacion.md)
+* [Instalación](https://github.com/erasmolpa/dockerLab/blob/master/Instalacion.md)
 * [Arquitectura](#arquitectura)
 * [Imágenes](#imagenes)
 * [Contenedores](#Contenedores)
