@@ -17,7 +17,7 @@
    * [Ejercicio 8](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose. Creando múltiples multiservicios con Node y Nginx.
    * [Ejercicio 9](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Ejecutando un jenkins en local. La base de datos se almacena en un volumen.
                            
-#### <i class="icon-pencil"></i>Ejercicio_0. Familiarizarnos con Docker,Docker Hub y Kitematic.
+#### <i class="icon-pencil"></i>Ejercicio 0. Familiarizarnos con Docker,Docker Hub y Kitematic.
 
 Crear un primer contenedor...
 ```
