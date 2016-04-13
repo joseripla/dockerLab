@@ -6,7 +6,7 @@
 * [Instalación](https://github.com/erasmolpa/dockerLab/blob/master/Instalacion.md)
 * [Arquitectura](#arquitectura)
 * [Tutorial](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md)
-    * [Imágenes](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#imagenes)
+   c
     * [Contenedores](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#Contenedores)
         * [Layers](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#layers)
         *  [Links](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#links)
@@ -17,6 +17,7 @@
         * [Best Practices](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#best-practices)
     * [Registro](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#registro)
 * [Ejercicios](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md)
+   * [Ejercicio _0](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#imagenes)
    * [Ejercicio _0]((https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md)). Familiarizarnos con Docker,Docker Hub y Kitematic.
    * [Ejercicio_1]((https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md)). Creando el primer contenedor.
    * Ejercicio_2. Encapsulando un contenedor como servicio (Contenedor con apache2).
