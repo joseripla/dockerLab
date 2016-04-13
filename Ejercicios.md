@@ -4,18 +4,18 @@
 #   Ejercicios
 
 ##  Contenidos:
-
 * [Ejercicios](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md)
-   * Ejercicio 0. Familiarizarnos con Docker,Docker Hub y Kitematic.
-   * Ejercicio 1. Creando el primer contenedor.
-   * Ejercicio 2. Encapsulando un contenedor como servicio (Contenedor con apache2).
-   * Ejercicio 3. Creando un microservicio con Node.
-   * Ejercicio 4. Creando un contenedor MongoDb. Configuación del Volume.
-   * Ejercicio 5. Creando una base de datos Mysql:
-   * Ejercicio 5. Comunicando contenedores:
-   * Ejercicio 6. Docker Compose.Creando un Wordpress con MariaDb:
-   * Ejercicio 7. Docker Compose. Creando múltiples multiservicios con Node y Nginx:
-   * Ejercicio 8. Ejecutando un jenkins en local. La base de datos se almacena en un volumen 
+   
+    * [Ejercicio 0](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Familiarizarnos con Docker,Docker Hub y Kitematic.
+   * [Ejercicio 1](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando el primer contenedor.
+   * [Ejercicio 2](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Encapsulando un contenedor como servicio (Contenedor con apache2).
+   * [Ejercicio 3](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un microservicio con Node.
+   * [Ejercicio 4](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un contenedor MongoDb. Configuación del Volume.
+   * [Ejercicio 5](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando una base de datos Mysql:
+   * [Ejercicio 6](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Comunicando contenedores:
+   * [Ejercicio 7](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose.Creando un Wordpress con MariaDb:
+   * [Ejercicio 8](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose. Creando múltiples multiservicios con Node y Nginx.
+   * [Ejercicio 9](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Ejecutando un jenkins en local. La base de datos se almacena en un volumen.
                            
 #### <i class="icon-pencil"></i>Ejercicio 0. Familiarizarnos con Docker,Docker Hub y Kitematic.
 
