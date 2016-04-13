@@ -638,13 +638,22 @@ Crear nuestro propio DockerFile:
 $ mkdir mongodb
 $ cd mongodb
 $ vim Dockerfile y copiar el contenido del [Dockerfile](https://github.com/erasmolpa/mongoDocker.git)
-$ docker build-t mongodb .
+$ docker build -t mongodb . #donde mongodb en este caso es el nombre de la imagen
+$ docker run -d --name mongodb -p 27017:27017 -p 28017:28017 mongodb  --httpinterface 
 ```
 
 El contenido de ese DockerFile es idéntico al propietario.Podríamos modificarlo para ponerlo a nuestras necesidades.
+```
+$ docker search mongodb 
+```
+Una vez encontrada la imagen que queremos lanzar podemos hacer un pull y un run o directamente hacer un run.
 
+```
+$ docker  pull tutum/mongodb # para bajarnos la imagen de tutum/mongodb que es la oficial # Paso alternativo si queremos hacer un pull primero.
+```
+```
 $ docker run -d --name mongoDB -p 27017:27017 -p 28017:28017 erasmolpa/mongo --httpinterface 
-
+```
 
 Esto monta el mongobd en 192.168.99.100:27017 y la consola en 192.168.99.100:28017
 
