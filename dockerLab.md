@@ -625,29 +625,43 @@ https://www.youtube.com/watch?v=PJ95WY2DqXo
 #### <i class="icon-pencil"></i>Ejercicio 4.Creando un contenedor MongoDb. Configuación del Volume.
 
 #### <i class="icon-pencil"></i>Ejercicio 5.Comunicando contenedores:
-Linking es un metodo de comunicación entre contenedores que permite transferir informacion entre ellos.
-Existen dos tipos de contenedores:
-
-Recipient , Tienen acceso a los datos del Source ejempplo. Web con base de datos, el contenedor web es el Recipient y la bbdd es el source.
-
-Crear el Source,"BBDD " primero 
-```
-$ docker run -d --name dabatase postgres
-$ docker ps
-$ docker run -d -P --name website --link database:db nginx
-
-
-$ docker run -d --name dabatase postgres
-$ docker ps
-$ docker run -it --name website --link database:db ubuntu:14.04 bash
-$cat /etc/hosts
-
-```
-Crear el Recipient usando un --link al otro contenedor.
-
-Es bueno 
-
-
 https://www.docker.com/products/docker-toolbox#/tutorials
-#### <i class="icon-pencil"></i>Ejercicio 6. Docker Compose.Creando un StackFile:
+#### <i class="icon-pencil"></i>Ejercicio 6. Docker Compose.Creando un Wordpress con MariaDb:
 
+ Accediendo al [hub oficial de wordpress](https://hub.docker.com/r/library/wordpress/) vemos que proponen dos caminos para crear una web wordpress:
+
+Con dos contenedores que se comunican por link container...
+
+```
+ docker run --name some-wordpress --link some-mysql:mysql -d wordpress
+```
+
+O con docker compose, creando el docker-compose.yml con el siguiente contenido:
+
+```
+wordpress:
+  image: wordpress
+  links:
+    - db:mysql
+  ports:
+    - 8080:80
+
+db:
+  image: mariadb
+  environment:
+    MYSQL_ROOT_PASSWORD: example
+```
+
+Una vez creado el compose, lanzar:
+```
+docker-compose up
+```
+Y ya puedes instalar tu wordpress... 
+```
+Ojo, he puesto la ip de mi instancia de docker..
+
+http://192.168.99.100:8080/wp-admin/install.php
+
+```
+
+#### <i class="icon-pencil"></i>Ejercicio 7. Docker Compose. Creando múltiples multiservicios con Node y Nginx:
