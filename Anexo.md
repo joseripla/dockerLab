@@ -1,3 +1,146 @@
+## Anexo
+
+### Last Ids
+
+```
+alias dl='docker ps -l -q'
+docker run ubuntu echo hello world
+docker commit `dl` helloworld
+```
+
+### Commit with command (needs Dockerfile)
+
+```
+docker commit -run='{"Cmd":["postgres", "-too -many -opts"]}' `dl` postgres
+```
+
+### Get IP address
+
+```
+docker inspect `dl` | grep IPAddress | cut -d '"' -f 4
+```
+
+or install [jq](https://stedolan.github.io/jq/):
+
+```
+docker inspect `dl` | jq -r '.[0].NetworkSettings.IPAddress'
+```
+
+or using a [go template](https://docs.docker.com/reference/commandline/inspect)
+
+```
+docker inspect -f '{{ .NetworkSettings.IPAddress }}' <container_name>
+```
+
+### Get port mapping
+
+```
+docker inspect -f '{{range $p, $conf := .NetworkSettings.Ports}} {{$p}} -> {{(index $conf 0).HostPort}} {{end}}' <containername>
+```
+
+### Find containers by regular expression
+
+```
+for i in $(docker ps -a | grep "REGEXP_PATTERN" | cut -f1 -d" "); do echo $i; done`
+```
+
+### Get Environment Settings
+
+```
+docker run --rm ubuntu env
+```
+
+### Kill running containers
+
+```
+docker kill $(docker ps -q)
+```
+
+### Delete old containers
+
+```
+docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs docker rm
+```
+
+### Delete stopped containers
+
+```
+docker rm -v `docker ps -a -q -f status=exited`
+```
+
+### Delete dangling images
+
+```
+docker rmi $(docker images -q -f dangling=true)
+```
+
+### Delete all images
+
+```
+docker rmi $(docker images -q)
+```
+
+### Delete dangling volumes
+
+As of Docker 1.9:
+
+```
+docker volume rm $(docker volume ls -q -f dangling=true)
+```
+
+In 1.9.0, the filter `dangling=false` does _not_ work - it is ignored and will list all volumes.
+
+### Show image dependencies
+
+```
+docker images -viz | dot -Tpng -o docker.png
+```
+
+### Slimming down Docker containers  [Intercity Blog](http://bit.ly/1Wwo61N)
+
+- Cleaning APT in a RUN layer  
+This should be done in the same layer as other apt commands.  
+Otherwise, the previous layers still persist the original information and your images will still be fat.  
+```
+RUN {apt commands} \
+ && apt-get clean \  
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+```
+- Flatten an image
+```
+ID=$(docker run -d image-name /bin/bash)
+docker export $ID | docker import – flat-image-name
+```
+
+- For backup
+```
+ID=$(docker run -d image-name /bin/bash)
+(docker export $ID | gzip -c > image.tgz)
+gzip -dc image.tgz | docker import - flat-image-name
+```
+
+### Monitor system resource utilization for running containers
+
+To check the CPU, memory, and network i/o usage of a single container, you can use:
+
+```
+docker stats <container>
+```
+
+For all containers listed by id:
+
+```
+docker stats $(docker ps -q)
+```
+
+For all containers listed by name:
+
+```
+docker stats $(docker ps --format '{{.Names}}')
+```
+
+
+
 
 ### COMANDOS DOCKER COMPOSE
 Aquí los comandos más usados de docker-compose, asumiendo que el usuario ha llevado a cabo el ciclo de creación y mantenimiento de contenedores mediante el manager oficial de docker, y que mantiene un determinado repositorio de imágenes (en local o remoto).
