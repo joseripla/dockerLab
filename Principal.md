@@ -18,6 +18,11 @@
     * [Registro](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#registro)
 * [Ejercicios](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md)
 * [Anexo](https://github.com/erasmolpa/dockerLab/blob/master/Anexo.md)
+   * Algunos comandos útiles.
+   * Introducción del siguiente laboratorio.
+      * Docker Compose. Orquestando Servicios.
+      * [Docker Cloud](https://cloud.docker.com/). Plataforma para desplegar contenedores.
+      * Docker y la IC. 
                                
 ## Arquitectura
 [Repasar las diapositivas del primer Meetup](http://es.slideshare.net/ErasmoDominguezJimen/devops-episodio-1-devopstnf?qid=a3de014b-9e2f-41fb-8d52-cb05aef9f9ac&v=&b=&from_search=1).
