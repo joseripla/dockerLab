@@ -11,7 +11,7 @@
    * [Ejercicio 2](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Encapsulando un contenedor como servidor. Contenedor [tomcat](https://hub.docker.com/_/tomcat/)
    * [Ejercicio 3](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un microservicio con Node.
    * [Ejercicio 4](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un contenedor MongoDb.Básico.
-   * [Ejercicio 5](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando una base de datos Mysql:
+   * [Ejercicio 5](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando una base de datos Mysql.
    * [Ejercicio 6](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Comunicando contenedores: Links Containers.
    * [Ejercicio 7](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose.Creando un Wordpress con MariaDb:
    * [Ejercicio 8](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Docker Compose. Creando múltiples multiservicios con Node y Nginx.
@@ -59,7 +59,7 @@ docker inspect "IMAGE ID"
 ```
 docker run -it --rm -p 8888:8080 tomcat:8.0
 ```
-###### Ejercicio 2.2. Dockerizar Docker con [Graylog](https://www.ctl.io/developers/blog/post/docker-tomcat-graylog).
+###### Ejercicio 2.2. Dockerizar Tomcat con [Graylog](https://www.ctl.io/developers/blog/post/docker-tomcat-graylog).
 
 #### <i class="icon-pencil"></i>Ejercicio 3. Creando un microservicio con Node.
 
