@@ -6,7 +6,7 @@
 
 * Introducción del siguiente laboratorio.
 	* Algunos [comandos](#comandos) útiles.      
-	* Docker Compose. Orquestando Servicios.
+	* Docker [Compose](#compose). Orquestando Servicios.
       	* [Docker Cloud](https://cloud.docker.com/). Plataforma para desplegar contenedores.
       	* Docker y la IC
       		*  Integración contínua en Docker con [Circleci](https://circleci.com/docs/docker/)
