@@ -17,14 +17,6 @@
 * [Registro](#registro)
 * [Ejercicios](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md)
 * [Anexo](https://github.com/erasmolpa/dockerLab/blob/master/Anexo.md)
-	* Algunos comandos útiles.
-	* Introducción del siguiente laboratorio.
-      * Docker Compose. Orquestando Servicios.
-      * [Docker Cloud](https://cloud.docker.com/). Plataforma para desplegar contenedores.
-      * Docker y la IC. 
-		      *  https://circleci.com/docs/docker/
-		      *  https://www.docker.com/sites/default/files/RA_CI%20with%20Docker_08.25.2015.pdf
-		      *  Ejemplo http://jenkins-58674a6f-1.225b690b.cont.dockerapp.io:32769/
                                
 ## Arquitectura
 [Repasar las diapositivas del primer Meetup](http://es.slideshare.net/ErasmoDominguezJimen/devops-episodio-1-devopstnf?qid=a3de014b-9e2f-41fb-8d52-cb05aef9f9ac&v=&b=&from_search=1).
