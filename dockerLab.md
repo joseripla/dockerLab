@@ -1,11 +1,3 @@
-# see https://help.github.com/articles/basic-writing-and-formatting-syntax/#using-emoji
-https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
-
-
-#BASE
-
-https://jsitech1.gitbooks.io/meet-docker/content/mejores_practicas_dockerfiles.html
-# Laboratorio de Docker
 
 ##  Contenidos:
 
