@@ -1,5 +1,7 @@
 <  [Principal](https://github.com/erasmolpa/dockerLab/blob/master/Principal.md)
 
+## Opción 1. Instalar directamente. Dependerá del SO.
+
 ### Linux
 
 La distro ha de ser  al menos 3.10.x kernel is [requisitos de distro](https://docs.docker.com/installation/binaries/#check-kernel-dependencies)
@@ -26,6 +28,8 @@ Docker Toolbox es una herramienta que nos instalará :
 * Además, permite descargar e instalar git y Virtualbox.
 
 Si tienes dudas sobre la instalacion.... [installation](https://docs.docker.com/installation/)
+
+## Opción 2. Instalación Virtualizada.
 
 ### VAGRANT Y VIRTUAL BOX
 
