@@ -53,7 +53,7 @@ docker ps
 docker inspect "IMAGE ID"
 ```
 
-#### <i class="icon-pencil"></i>.Ejercicio 2. Encapsulando un contenedor como servidor tomcat.
+#### <i class="icon-pencil"></i>Ejercicio 2. Encapsulando un contenedor como servidor tomcat.
 
 ###### Ejercicio 2.1. Crear el contenedor.
 ```
