@@ -8,7 +8,7 @@
    
    * [Ejercicio 0](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Familiarizarnos con Docker,Docker Hub y Kitematic.
    * [Ejercicio 1](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando el primer contenedor.
-   * [Ejercicio 2](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Encapsulando un contenedor como servidor. Contenedor [tomcat](https://hub.docker.com/_/tomcat/)
+   * [Ejercicio 2](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Un servidor Tomcat como contenedor como servidor.
    * [Ejercicio 3](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un microservicio con Node.
    * [Ejercicio 4](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un contenedor MongoDb.Básico.
    * [Ejercicio 5](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando una base de datos Mysql.
@@ -53,7 +53,7 @@ docker ps
 docker inspect "IMAGE ID"
 ```
 
-#### <i class="icon-pencil"></i>Ejercicio 2. Encapsulando un contenedor como servidor tomcat.
+#### <i class="icon-pencil"></i>Ejercicio 2. Un servidor [Tomcat](https://hub.docker.com/_/tomcat/) como contenedor como servidor.
 
 ###### Ejercicio 2.1. Crear el contenedor.
 ```
