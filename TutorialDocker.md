@@ -3,7 +3,7 @@
 
 # Tutorial de Docker
 
-##  Contenidos:
+##  Contenido:
 
  * [Images](#imagenes)
  
