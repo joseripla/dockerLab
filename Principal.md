@@ -5,16 +5,18 @@
 
 * [Instalación](https://github.com/erasmolpa/dockerLab/blob/master/Instalacion.md)
 * [Arquitectura](#arquitectura)
+* 
+* https://github.com/erasmolpa/dockerLab/blob/master/Principal.md#layers
 * [Imágenes](#imagenes)
 * [Contenedores](#Contenedores)
-     * [Layers](#layers)
-     *  [Links](#links)
-     * [Volumes](#volumes)
-     * [Exposing Ports](#exposing-ports)
-     * [Red](#red)
-* [Dockerfile](#dockerfile)
-      * [Best Practices](#best-practices)
-* [Registro](#registro)
+     * [Layers](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#layers)
+     *  [Links](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#links)
+     * [Volumes](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#volumes)
+     * [Exposing Ports](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#exposing-ports)
+     * [Red](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#red)
+* [Dockerfile](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#dockerfile)
+      * [Best Practices](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#best-practices)
+* [Registro](https://github.com/erasmolpa/dockerLab/blob/master/TutorialDocker.md#registro)
 * [Ejercicios](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md)
 * [Anexo](https://github.com/erasmolpa/dockerLab/blob/master/Anexo.md)
                                
