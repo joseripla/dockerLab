@@ -657,12 +657,9 @@ $ docker run --name jenkins -p 8080:8080 -p 50000:50000 -v /Users/erasmodomingue
 
 Esto monta jenkins en http://192.168.99.100:8080/
 ```
+Que pasaría si modificamos el Jenkins, instalando plugins? . Al parar el contenedor y volver a arrancarlo que pasaría.? 
 
 ## Anexo
-
-Sources:
-
-* [15 Docker Tips in 5 minutes](http://sssslide.com/speakerdeck.com/bmorearty/15-docker-tips-in-5-minutes)
 
 ### Last Ids
 
