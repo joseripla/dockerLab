@@ -158,6 +158,7 @@ docker stats $(docker ps --format '{{.Names}}')
 
 
 ### Compose:
+
 Aquí los comandos más usados de docker-compose, asumiendo que el usuario ha llevado a cabo el ciclo de creación y mantenimiento de contenedores mediante el manager oficial de docker, y que mantiene un determinado repositorio de imágenes (en local o remoto).
 
 Arrancar un entorno en primer plano, es decir, la ejecución del contenedor es un proceso que hereda de la consola. La salida estándar y de error del contenedor se mostrará por pantalla. Como no se le ha pasado ningún argumento más, Docker Compose tomará el fichero con nombre exacto docker-compose.yml en la ruta en la que se está posicionado en ese momento.
@@ -186,7 +187,7 @@ $ docker-compose logs
 Comprobar un fichero con la especificación yml del entorno
 $ docker-compose -f <fichero.yml> config
 </code>
-
+https://stackfiles.io/
 
 Docker Compose
 
