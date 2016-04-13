@@ -31,15 +31,15 @@ Si tienes dudas sobre la instalacion.... [installation](https://docs.docker.com/
 
    Instalación de máquina virtual Ubuntu con Vagrant.Sólo hay que instalar virtualBox y Vagrant.
    
-   El box está en la siguiente [enlace](https://atlas.hashicorp.com/erasmolpa/boxes/UbuntuDocker15GB)
-   
-   Una vez instalada la máquina virtual se puede ajustar la RAM etc..
-   
    Los comandos a ejecutar para instalar son:
     
     ```
     $ vagrant init erasmolpa/UbuntuDocker15GB;
     $ vagrant up --provider virtualbox;
     ```
+   El box está en la siguiente [enlace](https://atlas.hashicorp.com/erasmolpa/boxes/UbuntuDocker15GB)
+   
+   Una vez instalada la máquina virtual se puede ajustar la RAM etc..
+   
    Esto inicia la máquina virtual en virtual Box.
      * IMPORTANTE el usuario y password son IGUALES :) 
