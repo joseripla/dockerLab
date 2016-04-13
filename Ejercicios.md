@@ -6,7 +6,7 @@
 ##  Contenido:
 * [Ejercicios](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md)
    
-    * [Ejercicio 0](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Familiarizarnos con Docker,Docker Hub y Kitematic.
+   * [Ejercicio 0](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Familiarizarnos con Docker,Docker Hub y Kitematic.
    * [Ejercicio 1](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando el primer contenedor.
    * [Ejercicio 2](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Encapsulando un contenedor como servidor. Contenedor [tomcat](https://hub.docker.com/_/tomcat/)
    * [Ejercicio 3](https://github.com/erasmolpa/dockerLab/blob/master/Ejercicios.md) .Creando un microservicio con Node.
@@ -60,9 +60,10 @@ docker run -it --rm -p 8888:8080 tomcat:8.0
 ```
 
 #### <i class="icon-pencil"></i>Ejercicio 3. Creando un microservicio con Node.
-https://www.youtube.com/watch?v=PJ95WY2DqXo
 
-#### Ejercicio 3.1. Modificando el contenedor creado.
+#### Ejercicio 3.1. Node.
+
+#### Ejercicio 3.2. Usando una Api Node publicada.Modificando el contenedor creado.
 
 ```
 $ docker pull erasmolpa/loopbackend:1.0
@@ -118,7 +119,7 @@ $ node .
  en el navegador abrir http://192.168.99.100:9000/explorer/
 ```
 
-#### Ejercicio 3.2. Montando el contenedor con un volumen.
+#### Ejercicio 3.3.Usando una Api Node publicada.La Api se monta en el contenedor como volumen.
 
 ```
 $ mkdir directorio
