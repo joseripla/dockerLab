@@ -28,8 +28,8 @@
 
 Curiosidades....
 
- `docker run --rm`  ,para Eliminar un contenedor después de parar su ejecución.Contenedor de tránsito.
- `docker run -i -t /bin/bash` Arrancamos un docker en modo terminal. -i para conectar a STDIN y -t para decir que entramos en modo terminal.
+ `docker run --rm`  .Para Eliminar un contenedor después de parar su ejecución.Contenedor de tránsito.
+ `docker run -i -t /bin/bash` .Arrancamos un docker en modo terminal. -i para conectar a STDIN y -t para decir que entramos en modo terminal.
  
 Para mapear directorios entre Host y Contenedor -->  `docker run -v $HOSTDIR:$DOCKERDIR`.  Ver [volúmenes en Docker](https://github.com/wsargent/docker-cheat-sheet/#volumes) 
 
@@ -42,7 +42,7 @@ Para eliminar el volumen asociado a un contenedor. `docker rm -v`.
 * [`docker restart`](https://docs.docker.com/reference/commandline/restart) --> Para y arrranca un container.
 * [`docker pause`](https://docs.docker.com/engine/reference/commandline/pause/) --> "congela" un conteneder tal cuál está en ese momento. Pausa todo sus procesos.
 * [`docker unpause`](https://docs.docker.com/engine/reference/commandline/unpause/)  --> Descongela el contenedor y lo arranca .
-* [`docker kill`](https://docs.docker.com/reference/commandline/kill) Mata el proceso con el que correo un contenedor.Para el contenedor.
+* [`docker kill`](https://docs.docker.com/reference/commandline/kill) --> Mata el proceso con el que correo un contenedor.Para el contenedor.
 * [`docker attach`](https://docs.docker.com/reference/commandline/attach) --> Conectamos a un contenedor que esta corriendo.
 
 ```
@@ -94,32 +94,19 @@ Para más detalles sobre la estrategia de gestión de imágenes ver la [docu](ht
 
 Los [Links](https://docs.docker.com/userguide/dockerlinks/) , es el mecanismo que ofrece Docker para establecer diálogo entre contenedores.
 
-NOTE: If you want containers to ONLY communicate with each other through links, start the docker daemon with `-icc=false` to disable inter process communication.
+Para hacer links entre contenedores , existen dos roles:
 
-If you have a container with the name CONTAINER (specified by `docker run --name CONTAINER`) and in the Dockerfile, it has an exposed port:
-
+ *  Recipient container es el que tiene acceso al Source (ejem: servidor Web).
+ *  Source Container, es el que se expone como recurso (ejem: base de datos).
+ 
 ```
-EXPOSE 1337
-```
-
-Then if we create another container called LINKED like so:
-
-```
-docker run -d --link CONTAINER:ALIAS --name LINKED user/wordpress
+$ docker run --name CONTAINER
+$ docker run -d --link CONTAINER:ALIAS --name LINKED user/wordpress
 ```
 
-Then the exposed ports and aliases of CONTAINER will show up in LINKED with the following environment variables:
+Para elimiar el link creado.
 
-```
-$ALIAS_PORT_1337_TCP_PORT
-$ALIAS_PORT_1337_TCP_ADDR
-```
-
-And you can connect to it that way.
-
-To delete links, use `docker rm --link `.
-
-If you want to link across docker hosts then you should look at [Swarm](https://docs.docker.com/swarm/). This [link on stackoverflow](https://stackoverflow.com/questions/21283517/how-to-link-docker-services-across-hosts) provides some good information on different patterns for linking containers across docker hosts.
+ `docker rm --link `.
 
 ## Volumes
 
@@ -132,12 +119,12 @@ Un Volumen es asignar un directorio a un container para almacenar datos.
 
 Los Volumes de Docker son  [free-floating filesystems](https://docs.docker.com/userguide/dockervolumes/),es decir , no necesitan ser conectados por un contenedor en concreto. 
 
-### Lifecycle
+### Ciclo de vida
 
 * [`docker volume create`](https://docs.docker.com/engine/reference/commandline/volume_create/)
 * [`docker volume rm`](https://docs.docker.com/engine/reference/commandline/volume_rm/)
 
-### Info
+### Interactuar
 
 * [`docker volume ls`](https://docs.docker.com/engine/reference/commandline/volume_ls/)
 * [`docker volume inspect`](https://docs.docker.com/engine/reference/commandline/volume_inspect/)
