@@ -300,9 +300,14 @@ EXPOSE 80 443
 # La escucha....
 $ docker run centos:centos7 -p 8080:80
 ```
-* [ENV](https://docs.docker.com/reference/builder/#env) sets environment variable.
+* [ENV](https://docs.docker.com/engine/reference/run/#env-environment-variables) --> Esta instrucción configura las variables de entorno.
 
-* [ADD](https://docs.docker.com/reference/builder/#add)  --> copies new files, directories or remote file to container.  Invalidates caches. Avoid `ADD` and use `COPY` instead.
+* [ADD](https://docs.docker.com/reference/builder/#add)  --> Esta instrucción copia los archivos, directorios de una ubicación especificada en y los agrega al sistema de archivos del contenedor en la ruta especificada en .
+
+Ejemplo:
+```
+ADD ./prueba.sh /var/tmp/prueba.sh
+```
 
 * [COPY](https://docs.docker.com/reference/builder/#copy)  --> Permite copiar ficheros y directorios en el contenedor.
 
@@ -332,12 +337,11 @@ VOLUME [“/var/tmp”] Es un json
 VOLUME /var/tmp o un argumento "plano"
 ```
 
-* [USER](https://docs.docker.com/reference/builder/#user) sets the user name for following RUN / CMD / ENTRYPOINT commands.
-* [WORKDIR](https://docs.docker.com/reference/builder/#workdir) sets the working directory.
-* [ARG](https://docs.docker.com/engine/reference/builder/#arg) defines a build-time variable.
-* [ONBUILD](https://docs.docker.com/reference/builder/#onbuild) adds a trigger instruction when the image is used as the base for another build.
-* [STOPSIGNAL](https://docs.docker.com/engine/reference/builder/#stopsignal) sets the system call signal that will be sent to the container to exit.
-* [LABEL](https://docs.docker.com/engine/userguide/labels-custom-metadata/) apply key/value metadata to your images, containers, or daemons.  
+* [USER](https://docs.docker.com/reference/builder/#user)  --> Esta instrucción configura el nombre de usuario a usar cuando se lanza un contenedor y para la ejecución de cualquier instrucción RUN, CMD o ENTRYPOINT. WORKDIR.
+
+* [WORKDIR](https://docs.docker.com/reference/builder/#workdir) --> Establece el directorio de trabajo
+
+* [ARG](https://docs.docker.com/engine/reference/builder/#arg)  --> Instruccion que se el usuario puede pasar en tiempo de construccion al contenedor.
 
 
 ### Sitios recomendables
@@ -348,8 +352,6 @@ VOLUME /var/tmp o un argumento "plano"
 
 
 ## Best Practices
-
-This is where general Docker best practices and war stories go:
 
 * [The Rabbit Hole of Using Docker in Automated Tests](http://gregoryszorc.com/blog/2014/10/16/the-rabbit-hole-of-using-docker-in-automated-tests/)
 * [Bridget Kromhout](https://twitter.com/bridgetkromhout) has a useful blog post on [running Docker in production](http://sysadvent.blogspot.co.uk/2014/12/day-1-docker-in-production-reality-not.html) at Dramafever.  
