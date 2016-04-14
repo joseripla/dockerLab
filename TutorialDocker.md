@@ -112,12 +112,14 @@ Para elimiar el link creado.
 
 Un Volumen es asignar un directorio a un container para almacenar datos.
 
+Son de utilidad para compartir información entre contenedores, por ejemplo ficheros, bases de datos o usarse en contenedores de tránsito, contenedores que generan estos volúmenes de información para que otros contenedores lo utilicen posteriormente.
+
+Los [Volumes](https://docs.docker.com/engine/userguide/containers/dockervolumes/) de Docker son  [free-floating filesystems](https://docs.docker.com/userguide/dockervolumes/),es decir , no necesitan ser conectados por un contenedor en concreto. 
+
 * Los cambios son excluidos cuando se actualiza una imagen.
 * Se persiste cuando un contenedor se borra.
 * Se puede mapear a una carpeta del host.
 * Pueden ser compartidos entre contenedores.
-
-Los [Volumes](https://docs.docker.com/engine/userguide/containers/dockervolumes/) de Docker son  [free-floating filesystems](https://docs.docker.com/userguide/dockervolumes/),es decir , no necesitan ser conectados por un contenedor en concreto. 
 
 ### Ciclo de vida
 
@@ -129,68 +131,40 @@ Los [Volumes](https://docs.docker.com/engine/userguide/containers/dockervolumes/
 * [`docker volume ls`](https://docs.docker.com/engine/reference/commandline/volume_ls/)
 * [`docker volume inspect`](https://docs.docker.com/engine/reference/commandline/volume_inspect/)
 
-
-Volumes are useful in situations where you can't use links (which are TCP/IP only).  For instance, if you need to have two docker instances communicate by leaving stuff on the filesystem.
-
-You can mount them in several docker containers at once, using `docker run --volumes-from`.
-
-Because volumes are isolated filesystems, they are often used to store state from computations between transient containers.  That is, you can have a stateless and transient container run from a recipe, blow it away, and then have a second instance of the transient container pick up from where the last one left off.
-
-See [advanced volumes](http://crosbymichael.com/advanced-docker-volumes.html) for more details.  Container42 is [also helpful](http://container42.com/2014/11/03/docker-indepth-volumes/).
-
-As of 1.3, you can [map MacOS host directories as docker volumes](https://docs.docker.com/userguide/dockervolumes/#mount-a-host-directory-as-a-data-volume) through boot2docker:
-
 ```
 docker run -v /Users/wsargent/myapp/src:/src
 ```
+En el siguiente [artículo](http://crosbymichael.com/advanced-docker-volumes.html) se expone como configurar de forma avanzada los volúmenes.
 
-You can also use remote NFS volumes if you're [feeling brave](https://web.archive.org/web/20150306065158/http://www.tech-d.net/2014/03/29/docker-quicktip-4-remote-volumes/).
-
-You may also consider running data-only containers as described [here](http://container42.com/2013/12/16/persistent-volumes-with-docker-container-as-volume-pattern/) to provide some data portability.
+Leer el [artículo](http://container42.com/2013/12/16/persistent-volumes-with-docker-container-as-volume-pattern/) para configurar un contenedor como proveedor de datos.
 
 ## Exposing ports
 
-Exposing incoming ports through the host container is [fiddly but doable](https://docs.docker.com/reference/run/#expose-incoming-ports).
+Es el mecanismo de Docker configurar los puertos por los que escucha el contenedor
+especificados en su ejecución. Evidentemente hay que mapear los puertos entre los expuestos por el contenedor y por donde se accede desde el host. Ver la documentación oficial [incomming-ports](https://docs.docker.com/reference/run/#expose-incoming-ports).
 
-This is done by mapping the container port to the host port (only using localhost interface) using `-p`:
+Para mapear puertos entre el contenedor y el host usamos  `-p`:
 
 ```
 docker run -p 127.0.0.1:$HOSTPORT:$CONTAINERPORT --name CONTAINER -t someimage
 ```
-
-You can tell Docker that the container listens on the specified network ports at runtime by using [EXPOSE](https://docs.docker.com/reference/builder/#expose):
-
+Además podemos decirle a Docker que el contenedor escucha en un puerto especifico, utilizando la directiva 
+ [EXPOSE](https://docs.docker.com/reference/builder/#expose) en el Dockerfile.
+ 
 ```
 EXPOSE <CONTAINERPORT>
 ```
 
-But note that EXPOSE does not expose the port itself, only `-p` will do that.
-
-If you're running Docker in Virtualbox, you then need to forward the port there as well, using [forwarded_port](https://docs.vagrantup.com/v2/networking/forwarded_ports.html).  It can be useful to define something in Vagrantfile to expose a range of ports so that you can dynamically map them:
-
+Para ver los puertos que usa un contenedor:
 ```
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  ...
-
-  (49000..49900).each do |port|
-    config.vm.network :forwarded_port, :host => port, :guest => port
-  end
-
-  ...
-end
-```
-
-If you forget what you mapped the port to on the host container, use `docker port` to show it:
-
-```
-docker port CONTAINER $CONTAINERPORT
+docker port CONTAINER
 ```
 
 ## Images
 
 Como ya hemos comentado muchas veces, las imágenes son  [plantillas para contenedores](https://docs.docker.com/engine/understanding-docker/#how-does-a-docker-image-work).
 
-### Lifecycle
+### Ciclo de vida
 
 * [`docker images`](https://docs.docker.com/reference/commandline/images) -> Muestra todas las imágenes.
 * [`docker import`](https://docs.docker.com/reference/commandline/import) --> Crea una imagen de un fichero tgz (local o remoto).
@@ -199,28 +173,27 @@ Como ya hemos comentado muchas veces, las imágenes son  [plantillas para conten
 * [`docker rmi`](https://docs.docker.com/reference/commandline/rmi) --> Para eliminar una imagen existente.
 * [`docker load`](https://docs.docker.com/reference/commandline/load) -->Carga una imagen desde un fichero tar.
 * [`docker save`](https://docs.docker.com/reference/commandline/save)  --> Guarda una imagen en un fichero tar. Almacena todos los Layers, Tags y versiones de esa imagen.
-### Info
+*
+### Interactuar
 
-* [`docker history`](https://docs.docker.com/reference/commandline/history) shows history of image.
-* [`docker tag`](https://docs.docker.com/reference/commandline/tag) tags an image to a name (local or registry).
+* [`docker history`](https://docs.docker.com/reference/commandline/history)  --> Muestra un histórico de una imagen.
+* [`docker tag`](https://docs.docker.com/reference/commandline/tag) --> Crea un Tag de una imagen con el nombre facilitado.
 
-### Cleaning up
-
-While you can use the `docker rmi` command to remove specific images, there's a tool called [docker-gc](https://github.com/spotify/docker-gc) that will clean up images that are no longer used by any containers in a safe manner.
 
 ## Red
 
 Internamente, Docker utiliza los mecanismos de linux para dar conectividad a los contenedores.En la instalación, docker crea una interfaz virtual ``docker0` en el Host a la que se asigna una Ip , por ejemplo 192.168.99.100.
 
+Podemos deshabilitar esto por completo pasando la opción --net none . En estos casos las conexiones de entrada y salida se hacen por archivos y los streams estándar.
+
 Para más detalles [networking docker](https://docs.docker.com/engine/userguide/networking/work-with-networks/).
 
-### Lifecycle
+### Ciclo de vida.
 
 * [`docker network create`](https://docs.docker.com/engine/reference/commandline/network_create/)
 * [`docker network rm`](https://docs.docker.com/engine/reference/commandline/network_rm/)
 
-### Info
-
+### Interactuar.
 * [`docker network ls`](https://docs.docker.com/engine/reference/commandline/network_ls/)
 * [`docker network inspect`](https://docs.docker.com/engine/reference/commandline/network_inspect/)
 
