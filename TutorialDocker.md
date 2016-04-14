@@ -29,8 +29,8 @@
 Curiosidades....
 
  `docker run --rm`  .Para Eliminar un contenedor después de parar su ejecución.Contenedor de tránsito.
- `docker run -i -t /bin/bash` .Arrancamos un docker en modo terminal. -i para conectar a STDIN y -t para decir que entramos en modo terminal.
- 
+ `docker run -i -t /bin/bash` .Arrancamos un docker en modo terminal. -i para conectar a STDIN y -t para decir que entramos en modo terminal.Revisar la [docu](https://docs.docker.com/engine/quickstart/#running-an-interactive-shell) para modo interactivo.
+
 Para mapear directorios entre Host y Contenedor -->  `docker run -v $HOSTDIR:$DOCKERDIR`.  Ver [volúmenes en Docker](https://github.com/wsargent/docker-cheat-sheet/#volumes) 
 
 Para eliminar el volumen asociado a un contenedor. `docker rm -v`.
