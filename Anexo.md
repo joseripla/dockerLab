@@ -105,7 +105,7 @@ Ejemplo **docker-compose.yml** para wordpress:
  wordpress:
   image: wordpress
   links:
-    - db:mysql
+    - db:mariadb
   ports:
     - 8080:80
 db:
