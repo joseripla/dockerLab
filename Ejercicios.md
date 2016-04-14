@@ -37,6 +37,16 @@ $ docker run ubuntu ps ax
 
 $ docker ps -a
 ```
+Otra más.En background:
+```
+$ docker run -it -d ubuntu ./bin/bash 
+
+$ docker ps -a
+
+$ docker exec -it [container-id] bash
+
+```
+
 **También podemos buscar las imágenes en [Kitematic](https://kitematic.com/) o Docker [Hub](https://hub.docker.com) y hacer un pull and run.**
 
 #### <i class="icon-pencil"></i>Ejercicio 1.Creando el primer contenedor:
