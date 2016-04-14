@@ -27,7 +27,12 @@ $ docker search ubuntu
 
 $ docker search -s 10 ubuntu
 
-$ docker run -i -t ubuntu ./bin/bash
+$ docker run -it ubuntu ./bin/bash
+
+$ ps -ef #PID 1 dentro del contenedor...
+
+$ # En el contenedor Ctrl +p +q para salir y no matar el proceso ubuntu.
+
 ```
 Otra forma:
 ```
