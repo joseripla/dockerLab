@@ -247,6 +247,8 @@ Si por alguna razón la creación de la imágen falla, el Daemon hará uso de la
 
 ### Instrucciones y Etiquetas.
 
+*TODO* --> NO ESTÁN TODAS LAS DIRECTIVAS Y NO TODAS LAS DIRECTIVAS TIENEN EJEMPLO
+
 * [.dockerignore](https://docs.docker.com/reference/builder/#dockerignore-file) es el .gitignore de docker.
 
 * [FROM](https://docs.docker.com/reference/builder/#from) -->Establece la imagen base de la que partimos. Indica la imágen base que va a utilizar para seguir futuras instrucciones. Buscará si la imagen se encuentra localmente, en caso de que no, la descargará.
@@ -343,64 +345,13 @@ VOLUME /var/tmp o un argumento "plano"
 
 * [ARG](https://docs.docker.com/engine/reference/builder/#arg)  --> Instruccion que se el usuario puede pasar en tiempo de construccion al contenedor.
 
+### Sitios de interés
 
-### Sitios recomendables
+*TODO* --> AÑADIR MÁS SITIOS.
 
-* [Ejemplos](https://docs.docker.com/reference/builder/#dockerfile-examples)
+* [Ejemplos de Dockerfiles](https://docs.docker.com/reference/builder/#dockerfile-examples)
 * [Best practices](https://docs.docker.com/articles/dockerfile_best-practices/)
-* [Dockerfiles best practices](http://crosbymichael.com/dockerfile-best-practices.html) / [take 2](http://crosbymichael.com/dockerfile-best-practices-take-2.html)
-
-
-## Best Practices
-
-* [The Rabbit Hole of Using Docker in Automated Tests](http://gregoryszorc.com/blog/2014/10/16/the-rabbit-hole-of-using-docker-in-automated-tests/)
-* [Bridget Kromhout](https://twitter.com/bridgetkromhout) has a useful blog post on [running Docker in production](http://sysadvent.blogspot.co.uk/2014/12/day-1-docker-in-production-reality-not.html) at Dramafever.  
-* There's also a best practices [blog post](http://developers.lyst.com/devops/2014/12/08/docker/) from Lyst.
-* [A Docker Dev Environment in 24 Hours!](https://engineering.salesforceiq.com/2013/11/05/a-docker-dev-environment-in-24-hours-part-2-of-2.html)
-* [Building a Development Environment With Docker](https://tersesystems.com/2013/11/20/building-a-development-environment-with-docker/)
-* [Discourse in a Docker Container](https://samsaffron.com/archive/2013/11/07/discourse-in-a-docker-container)
-
-
-Turn off interprocess communication with:
-
-```
-docker -d --icc=false --iptables
-```
-
-Set the container to be read-only:
-
-```
-docker run --read-only
-```
-
-Verify images with a hashsum:
-
-```
-docker pull debian@sha256:a25306f3850e1bd44541976aa7b5fd0a29be
-```
-
-Set volumes to be read only:
-
-```
-docker run -v $(pwd)/secrets:/secrets:ro debian
-```
-
-Set memory and CPU sharing:
-
-```
-docker -c 512 -mem 512m
-```
-
-Define and run a user in your Dockerfile so you don't run as root inside the container:
-
-```
-RUN groupadd -r user && useradd -r -g user user
-USER user
-```
-
-### User Namespaces
-
-There's also work on [user namespaces](https://s3hh.wordpress.com/2013/07/19/creating-and-using-containers-without-privilege/) -- it is in 1.10 but is not enabled by default.
-
-To enable user namespaces ("remap the userns") in Ubuntu 15.10, [follow the blog example](https://raesene.github.io/blog/2016/02/04/Docker-User-Namespaces/).
-(https://raesene.github.io/blog/2016/02/04/Docker-User-Namespaces/).
+* [Best practices 2](http://crosbymichael.com/dockerfile-best-practices.html) 
+* [Best practices 3](http://crosbymichael.com/dockerfile-best-practices-take-2.html)
+* [Entorno de Desarrollo 1](https://engineering.salesforceiq.com/2013/11/05/a-docker-dev-environment-in-24-hours-part-2-of-2.html)
+* [Entorno de Desarrollo 2](https://tersesystems.com/2013/11/20/building-a-development-environment-with-docker/)
