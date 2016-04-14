@@ -202,29 +202,26 @@ Para más detalles [networking docker](https://docs.docker.com/engine/userguide/
 * [`docker network connect`](https://docs.docker.com/engine/reference/commandline/network_connect/)
 * [`docker network disconnect`](https://docs.docker.com/engine/reference/commandline/network_disconnect/)
 
-You can specify a [specific IP address for a container](https://blog.jessfraz.com/post/ips-for-all-the-things/):
+Ejemplo [especificando IP address container](https://blog.jessfraz.com/post/ips-for-all-the-things/):
 
 ```
-# create a new bridge network with your subnet and gateway for your ip block
-docker network create --subnet 203.0.113.0/24 --gateway 203.0.113.254 iptastic
-
-# run a nginx container with a specific ip in that block
+# Servidor Nginx en un contenedor con una ip específica
 $ docker run --rm -it --net iptastic --ip 203.0.113.2 nginx
-
-# curl the ip from any other place (assuming this is a public ip block duh)
-$ curl 203.0.113.2
 ```
+
 ##Registro
 
 Como crear, versionar y publicar nuestras propias imágenes? en el siguiente [enlace](https://docs.docker.com/mac/step_six/) se explica como .
 
-### Imágenes en repositorios. Docker Hub
+### Imágenes en repositorios. Docker Hub.
 
-Un repositorio es un host, donde se almacenan los tags asociados a imágenes creadas.
-Un registro es un host que almacena repositorios.Ejemplo [Docker Hub](https://hub.docker.com/)
-A registry is a *host* -- a server that stores repositories and provides an HTTP API for [managing the uploading and downloading of repositories](https://docs.docker.com/userguide/dockerrepos/).
+Un repositorio es un conjunto de imágenes, relacionadas a tags.
 
-Docker.com hosts its own [index](https://hub.docker.com/) to a central registry which contains a large number of repositories.  Having said that, the central docker registry [does not do a good job of verifying images](https://titanous.com/posts/docker-insecurity) and should be avoided if you're worried about security.
+Un registro es un host que almacena repositorios.
+
+Ir a [Docker Hub](https://hub.docker.com/) .
+
+Ver la guía de usuario para [manejo de imágenes](https://docs.docker.com/userguide/dockerrepos/).
 
 * [`docker login`](https://docs.docker.com/reference/commandline/login)  Login en un registro
 * [`docker search`](https://docs.docker.com/reference/commandline/search) Buscar registros de imágenes.
