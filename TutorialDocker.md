@@ -117,7 +117,7 @@ Un Volumen es asignar un directorio a un container para almacenar datos.
 * Se puede mapear a una carpeta del host.
 * Pueden ser compartidos entre contenedores.
 
-Los Volumes de Docker son  [free-floating filesystems](https://docs.docker.com/userguide/dockervolumes/),es decir , no necesitan ser conectados por un contenedor en concreto. 
+Los [Volumes](https://docs.docker.com/engine/userguide/containers/dockervolumes/) de Docker son  [free-floating filesystems](https://docs.docker.com/userguide/dockervolumes/),es decir , no necesitan ser conectados por un contenedor en concreto. 
 
 ### Ciclo de vida
 
@@ -128,6 +128,7 @@ Los Volumes de Docker son  [free-floating filesystems](https://docs.docker.com/u
 
 * [`docker volume ls`](https://docs.docker.com/engine/reference/commandline/volume_ls/)
 * [`docker volume inspect`](https://docs.docker.com/engine/reference/commandline/volume_inspect/)
+
 
 Volumes are useful in situations where you can't use links (which are TCP/IP only).  For instance, if you need to have two docker instances communicate by leaving stuff on the filesystem.
 
@@ -185,7 +186,7 @@ If you forget what you mapped the port to on the host container, use `docker por
 docker port CONTAINER $CONTAINERPORT
 ```
 
-## Imagenes
+## Images
 
 Como ya hemos comentado muchas veces, las imágenes son  [plantillas para contenedores](https://docs.docker.com/engine/understanding-docker/#how-does-a-docker-image-work).
 
@@ -196,9 +197,8 @@ Como ya hemos comentado muchas veces, las imágenes son  [plantillas para conten
 * [`docker build`](https://docs.docker.com/reference/commandline/build) --> Crea imagen de un Dockerfile.
 * [`docker commit`](https://docs.docker.com/reference/commandline/commit) -> Guarda los cambios hechos en un contenedor como una nueva imagen.Crea una imagen a partir del contenedor.
 * [`docker rmi`](https://docs.docker.com/reference/commandline/rmi) --> Para eliminar una imagen existente.
-* [`docker load`](https://docs.docker.com/reference/commandline/load) loads an image from a tar archive as STDIN, including images and tags (as of 0.7).
-* [`docker save`](https://docs.docker.com/reference/commandline/save) saves an image to a tar archive stream to STDOUT with all parent layers, tags & versions (as of 0.7).
-
+* [`docker load`](https://docs.docker.com/reference/commandline/load) -->Carga una imagen desde un fichero tar.
+* [`docker save`](https://docs.docker.com/reference/commandline/save)  --> Guarda una imagen en un fichero tar. Almacena todos los Layers, Tags y versiones de esa imagen.
 ### Info
 
 * [`docker history`](https://docs.docker.com/reference/commandline/history) shows history of image.
