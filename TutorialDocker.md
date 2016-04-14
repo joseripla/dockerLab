@@ -28,78 +28,71 @@
 
 Curiosidades....
 
- `docker run --rm` Eliminar un contenedor después de parar su ejecución.Contenedor de tránsito.
+ `docker run --rm`  ,para Eliminar un contenedor después de parar su ejecución.Contenedor de tránsito.
  `docker run -i -t /bin/bash` Arrancamos un docker en modo terminal. -i para conectar a STDIN y -t para decir que entramos en modo terminal.
  
 Para mapear directorios entre Host y Contenedor -->  `docker run -v $HOSTDIR:$DOCKERDIR`.  Ver [volúmenes en Docker](https://github.com/wsargent/docker-cheat-sheet/#volumes) 
 
 Para eliminar el volumen asociado a un contenedor. `docker rm -v`.
 
-## Interactuar con Contenedores.
+### Interactuar con Contenedores.
 
 * [`docker start`](https://docs.docker.com/reference/commandline/start)  --> Inicia un contenedor que está corriendo.
 * [`docker stop`](https://docs.docker.com/reference/commandline/stop) --> Para un contenedor que está corriendo.
 * [`docker restart`](https://docs.docker.com/reference/commandline/restart) --> Para y arrranca un container.
 * [`docker pause`](https://docs.docker.com/engine/reference/commandline/pause/) --> "congela" un conteneder tal cuál está en ese momento. Pausa todo sus procesos.
 * [`docker unpause`](https://docs.docker.com/engine/reference/commandline/unpause/)  --> Descongela el contenedor y lo arranca .
-* [`docker wait`](https://docs.docker.com/reference/commandline/wait) blocks until running container stops.
-* [`docker kill`](https://docs.docker.com/reference/commandline/kill) sends a SIGKILL to a running container.
-* [`docker attach`](https://docs.docker.com/reference/commandline/attach) will connect to a running container.
+* [`docker kill`](https://docs.docker.com/reference/commandline/kill) Mata el proceso con el que correo un contenedor.Para el contenedor.
+* [`docker attach`](https://docs.docker.com/reference/commandline/attach) --> Conectamos a un contenedor que esta corriendo.
 
-If you want to integrate a container with a [host process manager](https://docs.docker.com/articles/host_integration/), start the daemon with `-r=false` then use `docker start -a`.
-
-If you want to expose container ports through the host, see the [exposing ports](#exposing-ports) section.
-
-Restart policies on crashed docker instances are [covered here](http://container42.com/2014/09/30/docker-restart-policies/).
-
-### Info
-
-* [`docker ps`](https://docs.docker.com/reference/commandline/ps)  --> Muestra los contenedores que está corriendo.
-* [`docker logs`](https://docs.docker.com/reference/commandline/logs) --> Obtenemos los logs de un contenedor. Es posible usar drivers de terceros.
-* [`docker inspect`](https://docs.docker.com/reference/commandline/inspect) --> Obtener información completa de un contendor, incluido direccionamiento IP.
-* [`docker events`](https://docs.docker.com/reference/commandline/events) gets events from container.
-* [`docker port`](https://docs.docker.com/reference/commandline/port) shows public facing port of container.
-* [`docker top`](https://docs.docker.com/reference/commandline/top) shows running processes in container.
-* [`docker stats`](https://docs.docker.com/reference/commandline/stats) shows containers' resource usage statistics.
-* [`docker diff`](https://docs.docker.com/reference/commandline/diff) shows changed files in the container's FS.
-
-`docker ps -a` shows running and stopped containers.
-
-`docker stats --all` shows a running list of containers.
-
-### Import / Export
-
-* [`docker cp`](https://docs.docker.com/reference/commandline/cp) copies files or folders between a container and the local filesystem..
-* [`docker export`](https://docs.docker.com/reference/commandline/export) turns container filesystem into tarball archive stream to STDOUT.
-
-### Executing Commands
-
-* [`docker exec`](https://docs.docker.com/reference/commandline/exec) --> Para Ejecutar un comando en el contenedor.
-
-Una de las necesidades más habituales es comunicarse con el contenedor.Esto se puede hacer con exec o attach.
 ```
 $ sudo docker attach 665b4a1e17b6     #Para entrar usando el ID=665b4a1e17b6
 $ sudo docker attach mysql_container  #Para entrar usando en nombre,donde el nombre es mysql_container
 ```
+
+### Información sobre Contenedores.
+
+* [`docker ps`](https://docs.docker.com/reference/commandline/ps)  --> Muestra los contenedores que está corriendo.
+* [`docker logs`](https://docs.docker.com/reference/commandline/logs) --> Obtenemos los logs de un contenedor. Es posible usar drivers de terceros.
+* [`docker inspect`](https://docs.docker.com/reference/commandline/inspect) --> Obtener información completa de un contendor.
+* [`docker events`](https://docs.docker.com/reference/commandline/events) --> Muestra información en tiempo real de los eventos relativos a los contenedores.
+* [`docker port`](https://docs.docker.com/reference/commandline/port) --> Muestra conexión pública de puertos de un contenedor.
+* [`docker top`](https://docs.docker.com/reference/commandline/top) --> Muestra los procesos que corren en un contenedor.
+* [`docker stats`](https://docs.docker.com/reference/commandline/stats) --> Muestra estadísticas de uso de recursos del contenedor que corre.
+* [`docker diff`](https://docs.docker.com/reference/commandline/diff) ---> Muestra todos los cambios que se van realizando dentro del filesystem del contenedor.
+
+`$ docker ps `     Muestra los contenedores que están corriendo.
+`$ docker ps -a` Muestra los contenedores que están parados y corriendos.
+
+### Importar / Exportar Entre contenedor  y Host.
+
+* [`docker cp`](https://docs.docker.com/reference/commandline/cp) --> Copia ficheros entre el contenedor y el host.
+* [`docker export`](https://docs.docker.com/reference/commandline/export)  --> Exporta el contenido del sistema de archivos de un contenedor a un archivo tar.
+
+`$ docker cp <containerId>:/file/path/within/container /host/path/target `
+ `$ docker export "container ID " > dockerBackup.tar ` 
+
+
+### Ejecutar comandos.
+
+* [`docker exec`](https://docs.docker.com/reference/commandline/exec) --> Para Ejecutar un comando en el contenedor.
+
+Una de las necesidades más habituales es comunicarse con el contenedor.Esto se puede hacer con exec o attach.
 ```
 $ sudo docker exec -i -t 665b4a1e17b6  #Para entrar usando el ID=665b4a1e17b6  
 $ sudo docker exec -it mysql_container /bin/bash #Para entrar usando en nombre,donde el nombre es mysql_container
 ```
 
 ## Layers
-El sistema de ficheros de Docker esta basado en Capas. Ya se explicó este concepto en la presentación de Arquitectura. 
+El sistema de ficheros de Docker esta basado en Capas.Ya se explicó este concepto en la presentación de [Arquitectura](http://es.slideshare.net/ErasmoDominguezJimen/devops-episodio-1-devopstnf?qid=a3de014b-9e2f-41fb-8d52-cb05aef9f9ac&v=&b=&from_search=1) , diapositivas 29 -33 donde claramente se vé que internamente funciona como un Git.
 
-Docker crea una capa superior de escritura, donde se almacenan todos todos los cambios que hacemos sobre una imagen Padre.
+Docker crea una capa superior de escritura, donde se almacenan todos todos los cambios que hacemos sobre una imagen Padre. La imagen Padre es de sólo lectura.
 
-La imagen Padre es de sólo lectura.
-
-The versioned filesystem in Docker is based on layers.  They're like [git commits or changesets for filesystems](https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/).
-
-Note that if you're using [aufs](https://en.wikipedia.org/wiki/Aufs) as your filesystem, Docker does not always remove data volumes containers layers when you delete a container!  See [PR 8484](https://github.com/docker/docker/pull/8484) for more details.
+Para más detalles sobre la estrategia de gestión de imágenes ver la [docu](https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/) de Docker.
 
 ## Links
 
-Links are how Docker containers talk to each other [through TCP/IP ports](https://docs.docker.com/userguide/dockerlinks/).  [Linking into Redis](https://docs.docker.com/examples/running_redis_service/) and [Atlassian](https://blogs.atlassian.com/2013/11/docker-all-the-things-at-atlassian-automation-and-wiring/) show worked examples.  You can also (in 0.11) resolve [links by hostname](https://docs.docker.com/userguide/dockerlinks/#updating-the-etchosts-file).
+Los [Links](https://docs.docker.com/userguide/dockerlinks/) , es el mecanismo que ofrece Docker para establecer diálogo entre contenedores.
 
 NOTE: If you want containers to ONLY communicate with each other through links, start the docker daemon with `-icc=false` to disable inter process communication.
 
@@ -137,7 +130,7 @@ Un Volumen es asignar un directorio a un container para almacenar datos.
 * Se puede mapear a una carpeta del host.
 * Pueden ser compartidos entre contenedores.
 
-Docker volumes are [free-floating filesystems](https://docs.docker.com/userguide/dockervolumes/).  They don't have to be connected to a particular container.  You should use volumes mounted from [data-only containers](https://medium.com/@ramangupta/why-docker-data-containers-are-good-589b3c6c749e) for portability.
+Los Volumes de Docker son  [free-floating filesystems](https://docs.docker.com/userguide/dockervolumes/),es decir , no necesitan ser conectados por un contenedor en concreto. 
 
 ### Lifecycle
 
