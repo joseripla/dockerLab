@@ -18,6 +18,25 @@
 
 * *TODO * -->  Pendiente de listar entre todos podríamos hacer un listado de comandos que encontremos útiles.
 
+Contenedor en modo lectura:
+
+```
+docker run --read-only
+```
+
+Verificar imagen con hashsum:
+
+```
+docker pull debian@sha256:a25306f3850e1bd44541976aa7b5fd0a29be
+```
+
+
+Configurar memoria y CPU:
+
+```
+docker -c 512 -mem 512m
+```
+
 ### Compose. Primeros pasos:
 
 Docker [Compose](https://docs.docker.com/compose/) es una herramienta para definir y correr aplicaciones multicontenedores. Mediante un fichero de configuración, docker-compose.yml, orquestamos y "linkamos" nuestros contenedores.
