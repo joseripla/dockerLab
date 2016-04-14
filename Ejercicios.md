@@ -42,22 +42,23 @@ $ docker ps -a
 #### <i class="icon-pencil"></i>Ejercicio 1.Creando el primer contenedor:
 
 ```
-sudo docker run -i -t --name ubuntudocker ubuntu:latest /bin/bash
+$ docker run -i -t --name ubuntudocker ubuntu:latest /bin/bash
 
 # para ver la imagen corriendo
 
-docker ps
+$ docker ps
 
 #para ver toda la información detallada del contenedor
 
-docker inspect "IMAGE ID"
+$ docker inspect "IMAGE ID"
 ```
 
 #### <i class="icon-pencil"></i>Ejercicio 2. Un servidor [Tomcat](https://hub.docker.com/_/tomcat/) como contenedor.
 
 ###### Ejercicio 2.1. Crear el contenedor.
 ```
-docker run -it --rm -p 8888:8080 tomcat:8.0
+# Se lanza interactivo y con --rm para eliminar el contenedor previamente si existe.
+$ docker run -it --rm -p 8888:8080 tomcat:8.0
 ```
 ###### Ejercicio 2.2. Dockerizar Tomcat con [Graylog](https://www.ctl.io/developers/blog/post/docker-tomcat-graylog).
 
