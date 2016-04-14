@@ -185,6 +185,8 @@ $ cat /etc/hosts
 $ exit
 $ docker inspect databasePost | grep IPAddress
 ```     
+[Ejemplo](https://docs.docker.com/examples/running_redis_service) adicional.
+
 #### <i class="icon-pencil"></i>Ejercicio 7. Docker Compose.Creando un Wordpress con MariaDb:
 
  Accediendo al [hub oficial de wordpress](https://hub.docker.com/r/library/wordpress/) vemos que proponen dos caminos para crear una web wordpress:
