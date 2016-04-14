@@ -235,14 +235,20 @@ Se puede tener un registro de imágenes propios usando la imagen de docker hub [
 
 ## Dockerfile
 
-[The configuration file](https://docs.docker.com/reference/builder/). Sets up a Docker container when you run `docker build` on it.  Vastly preferable to `docker commit`.  If you use [jEdit](http://jedit.org), I've put up a syntax highlighting module for [Dockerfile](https://github.com/wsargent/jedit-docker-mode) you can use.
+El Dockerfile es el [fichero de configuracion](https://docs.docker.com/reference/builder/) donde definimos todas las intrucciones que conforman una imagen Docker. Para crear una imagen a partir de un Dockerfile utilizaremos el comando `docker build` .
 
-### Instructions
+Docker build le manda todo el contexto del directorio actual al Docker daemon,por lo que es muy importante aislar el  Dockerfile, creando un directorio solo para dicha configuración , un "workspace" y agregar en eses workspace todo lo que necesitemos para construir la imagen por medio del Dockerfile.
 
-@TODO --> EXPLICAR EL DOCKERFILE 
-https://jsitech1.gitbooks.io/meet-docker/content/dockerfiles.html
+Docker Daemon corre las instrucciones del Dockerfile linea por linea y va lanzando los resultados en pantalla y va creando imágenes intermedias durante la creación de la imágen final.
 
-* [.dockerignore](https://docs.docker.com/reference/builder/#dockerignore-file)
+El Daemon irá haciendo una limpieza automáticamente de las imágenes intermedias.
+
+Si por alguna razón la creación de la imágen falla, el Daemon hará uso de las imágenes intermedias, y continuará la creación en el punto donde falló.
+
+### Instrucciones y Etiquetas.
+
+* [.dockerignore](https://docs.docker.com/reference/builder/#dockerignore-file) es el .gitignore de docker.
+
 * [FROM](https://docs.docker.com/reference/builder/#from) -->Establece la imagen base de la que partimos. Indica la imágen base que va a utilizar para seguir futuras instrucciones. Buscará si la imagen se encuentra localmente, en caso de que no, la descargará.
 
 ```
@@ -285,10 +291,21 @@ Si queremos ejecutar un comando sin un shell, debemos expresar el comando en for
 CMD [“/usr/bin/service”, “httpd”, “start”]
 ```
 
-* [EXPOSE](https://docs.docker.com/reference/builder/#expose) informs Docker that the container listens on the specified network ports at runtime.  NOTE: does not actually make ports accessible.
+* [EXPOSE](https://docs.docker.com/reference/builder/#expose) --> Esta instrucción le especifica a docker que el contenedor escucha en los puertos especificados en su ejecución. EXPOSE no hace que los puertos puedan ser accedidos desde el host, para esto debemos mapear los puertos usando la opción -p en docker run.
+
+Ejemplo:
+```
+EXPOSE 80 443
+
+# La escucha....
+$ docker run centos:centos7 -p 8080:80
+```
 * [ENV](https://docs.docker.com/reference/builder/#env) sets environment variable.
-* [ADD](https://docs.docker.com/reference/builder/#add) copies new files, directories or remote file to container.  Invalidates caches. Avoid `ADD` and use `COPY` instead.
-* [COPY](https://docs.docker.com/reference/builder/#copy) copies new files or directories to container.
+
+* [ADD](https://docs.docker.com/reference/builder/#add)  --> copies new files, directories or remote file to container.  Invalidates caches. Avoid `ADD` and use `COPY` instead.
+
+* [COPY](https://docs.docker.com/reference/builder/#copy)  --> Permite copiar ficheros y directorios en el contenedor.
+
 * [ENTRYPOINT](https://docs.docker.com/reference/builder/#entrypoint) --> Configura un contenedor para comportarse como un ejecutable.
 
 ```
