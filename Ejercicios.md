@@ -140,7 +140,7 @@ $ node .
 ```
 $ mkdir directorio
 
-$ cd direcrtorio
+$ cd directorio
 
 $ git clone https://github.com/erasmolpa/loopCar.git
 
