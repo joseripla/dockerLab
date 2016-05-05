@@ -4,7 +4,7 @@
 
 ### Linux
 
-La distro ha de ser  al menos 3.10.x kernel is [requisitos de distro](https://docs.docker.com/installation/binaries/#check-kernel-dependencies)
+La distro ha de ser compatible al menos con la versión 3.10.x del kernel [link](https://docs.docker.com/installation/binaries/#check-kernel-dependencies).
 
 ```
 curl -sSL https://get.docker.com/ | sh
